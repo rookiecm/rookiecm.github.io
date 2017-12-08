@@ -2,17 +2,17 @@
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <sitemap>
-        <loc>http://yoursite-url/post-sitemap.xml</loc>
+        <loc>http://rookicm.github.io/post-sitemap.xml</loc>
         <lastmod>2017-12-08T05:49:49.007Z</lastmod>
     </sitemap>
 
     <sitemap>
-        <loc>http://yoursite-url/page-sitemap.xml</loc>
+        <loc>http://rookicm.github.io/page-sitemap.xml</loc>
         <lastmod>2017-12-08T05:49:49.143Z</lastmod>
     </sitemap>
 
     <sitemap>
-        <loc>http://yoursite-url/tag-sitemap.xml</loc>
+        <loc>http://rookicm.github.io/tag-sitemap.xml</loc>
         <lastmod>2017-12-08T05:49:49.007Z</lastmod>
     </sitemap>
 
