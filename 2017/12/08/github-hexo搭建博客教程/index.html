@@ -219,7 +219,8 @@
 <p>需要指出的是，我的开发环境为MacOS High Sierra, 版本 10.13.1<br>
 Win用户的操作可能有部分不一致。</p>
 <p>步骤如下：</p>
-<p>#Github</p>
+<h1><span id="github">Github</span></h1>
+<hr>
 <ul>
 <li>
 <p>注册Github并配置SSH(步骤不详述)</p>
@@ -228,7 +229,8 @@ Win用户的操作可能有部分不一致。</p>
 <p>建立仓库(repository),名称必须为：<code>&lt;yourusername&gt;.github,io</code></p>
 </li>
 </ul>
-<p>#安装nodejs和hexo</p>
+<h1><span id="安装nodejs和hexo">安装nodejs和hexo</span></h1>
+<hr>
 <ul>
 <li>
 <p>安装<a href="https://brew.sh/index_zh-cn.html" target="_blank" rel="noopener">homebrew</a>.（已经安装过则跳过）</p>
@@ -243,7 +245,8 @@ Win用户的操作可能有部分不一致。</p>
 </li>
 </ul>
 <p>注：建议参考<a href="https://hexo.io/zh-cn/docs/setup.html" target="_blank" rel="noopener">hexo官网</a>安装教程。</p>
-<p>#本地建站</p>
+<h1><span id="本地建站">本地建站</span></h1>
+<hr>
 <ul>
 <li>在terminal中将当前目录切换到想要建站的本地位置，例如:<code>cd/Desktop</code></li>
 <li>顺序执行以下每一条命令</li>
@@ -257,7 +260,8 @@ Win用户的操作可能有部分不一致。</p>
 <img src="http://i4.bvimg.com/622617/79906bd408c036c9.png" alt="Markdown"></p>
 </li>
 </ul>
-<p>#部署到github上</p>
+<h1><span id="部署到github上">部署到github上</span></h1>
+<hr>
 <p>编辑器(Vim、Sublime Text均可)打开本地文件夹中的_config.yml文件，下滑到最后，修改为：</p>
 <figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># Deployment</span></span><br><span class="line"><span class="meta">## Docs: https:<span class="comment">//hexo.io/docs/deployment.html</span></span></span><br><span class="line"><span class="symbol">deploy:</span></span><br><span class="line"><span class="symbol">  type:</span> git</span><br><span class="line"><span class="symbol">  repository:</span> https:<span class="comment">//github.com/rookiecm/rookiecm.github.io.git</span></span><br><span class="line"><span class="symbol">  branch:</span> master</span><br></pre></td></tr></table></figure>
 <p>保存后退出，在terminal中逐条执行以下命令.</p>
@@ -269,17 +273,22 @@ Win用户的操作可能有部分不一致。</p>
 后找到<a href="http://blog.csdn.net/weixin_36401046/article/details/52940313" target="_blank" rel="noopener">解决方案</a>：<code>$ npm install --save hexo-deployer-git</code>即可。</p>
 <p>至此，<a href="http://xn--yourUserName-h86s7cz57gwy1bnwog75jinzcomb.github.io" target="_blank" rel="noopener">我们已经可以通过yourUserName.github.io</a><br>
 来访问建立的博客.</p>
-<p>#更换主题<br>
-网上的教程大多是更换<a href="http://www.jianshu.com/p/469e985288b3?from=jiantop.com" target="_blank" rel="noopener">next主题</a>，此处我选择了另外一个主题<a href="https://github.com/YenYuHsuan/hexo-theme-beantech/" target="_blank" rel="noopener">beantech</a>.</p>
+<h1><span id="更换主题">更换主题</span></h1>
+<hr>
+<p>网上的教程大多是更换<a href="http://www.jianshu.com/p/469e985288b3?from=jiantop.com" target="_blank" rel="noopener">next主题</a>，此处我选择了另外一个主题<a href="https://github.com/YenYuHsuan/hexo-theme-beantech/" target="_blank" rel="noopener">beantech</a>.</p>
 <p>下载与配置按照作者给出的方法即可。值得一提的是，网站中about的介绍是在source文件夹下进行的，笔者一度找了很久。</p>
-<p>#写博客<br>
-##文字编辑<br>
-首先转化当前路径为<code>source/_posts</code></p>
+<h1><span id="写博客">写博客</span></h1>
+<hr>
+<h2><span id="文字编辑">文字编辑</span></h2>
+<hr>
+<p>首先转化当前路径为<code>source/_posts</code></p>
 <p>然后执行逐条以下命令</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> hexo new post <span class="string">"&lt;post name&gt;"</span> <span class="comment"># you can change post to $ another layout if you want</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> hexo clean &amp;&amp; hexo generate <span class="comment"># generate the static file</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> hexo server <span class="comment"># run hexo in local environment</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> hexo deploy <span class="comment"># hexo will push the static files $ automatically into the specific branch(gh-pages) of your repo!</span></span></span><br></pre></td></tr></table></figure>
-<p>##图像<br>
-由于github空间有限，所以我们使用图床来上传图片。所谓图床，就可以理解为一个云存储空间，通过一个地址访问。关于各种图床的讨论可以看<a href="https://www.zhihu.com/question/21667151" target="_blank" rel="noopener">这里</a>.这里我使用的是<a href="http://www.tietuku.com" target="_blank" rel="noopener">贴图库</a>，可以直接生成markdown语法下的链接格式。</p>
-<p>#总结</p>
+<h2><span id="图像">图像</span></h2>
+<hr>
+<p>由于github空间有限，所以我们使用图床来上传图片。所谓图床，就可以理解为一个云存储空间，通过一个地址访问。关于各种图床的讨论可以看<a href="https://www.zhihu.com/question/21667151" target="_blank" rel="noopener">这里</a>.这里我使用的是<a href="http://www.tietuku.com" target="_blank" rel="noopener">贴图库</a>，可以直接生成markdown语法下的链接格式。</p>
+<h1><span id="总结">总结</span></h1>
+<hr>
 <p>第一次成功搭建博客还是很开心，希望以后能持续更新。</p>
 
                 
@@ -320,7 +329,7 @@ Win用户的操作可能有部分不一致。</p>
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="nav">none</ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text"><span id="github">Github</span></span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text"><span id="&#x5B89;&#x88C5;nodejs&#x548C;hexo">&#x5B89;&#x88C5;nodejs&#x548C;hexo</span></span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.</span> <span class="toc-nav-text"><span id="&#x672C;&#x5730;&#x5EFA;&#x7AD9;">&#x672C;&#x5730;&#x5EFA;&#x7AD9;</span></span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.</span> <span class="toc-nav-text"><span id="&#x90E8;&#x7F72;&#x5230;github&#x4E0A;">&#x90E8;&#x7F72;&#x5230;github&#x4E0A;</span></span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.</span> <span class="toc-nav-text"><span id="&#x66F4;&#x6362;&#x4E3B;&#x9898;">&#x66F4;&#x6362;&#x4E3B;&#x9898;</span></span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">6.</span> <span class="toc-nav-text"><span id="&#x5199;&#x535A;&#x5BA2;">&#x5199;&#x535A;&#x5BA2;</span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">6.1.</span> <span class="toc-nav-text"><span id="&#x6587;&#x5B57;&#x7F16;&#x8F91;">&#x6587;&#x5B57;&#x7F16;&#x8F91;</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">6.2.</span> <span class="toc-nav-text"><span id="&#x56FE;&#x50CF;">&#x56FE;&#x50CF;</span></span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">7.</span> <span class="toc-nav-text"><span id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</span></span></a></li></ol>
         
         </div>
       </aside>
