@@ -216,7 +216,11 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1><span id="predicting-domain-generation-algorithms-with-long-short-term-memory-network">Predicting Domain Generation Algorithms with Long Short Term Memory Network</span></h1>
+                <blockquote>
+<p>这学期在360武汉研发中心实习，岗位是算法工程师，偏research,看了一些论文，整理了部分，以供参考。<br>
+实习的最大感受就是，虽然深度学习很火，每天也都有很多新的方法提升跑分效果，但是工业界的应用远远赶不上学术界的研究，有时候传统的特征方法+分类器的方法，反而比深度学习效果更好。<a href="https://pan.baidu.com/s/1nwhnyyd" target="_blank" rel="noopener">论文地址</a></p>
+</blockquote>
+<h1><span id="predicting-domain-generation-algorithms-with-long-short-term-memory-network">Predicting Domain Generation Algorithms with Long Short Term Memory Network</span></h1>
 <hr>
 <h2><span id="abstract">Abstract</span></h2>
 <hr>
@@ -272,6 +276,224 @@ DGA classifier: retrospective detection (using contextual information) and real-
 <hr>
 <h2><span id="conclusion">Conclusion</span></h2>
 <hr>
+<h1><span id="基于词素特征的轻量级域名检测算法">基于词素特征的轻量级域名检测算法</span></h1>
+<hr>
+<h2><span id="摘要">摘要</span></h2>
+<hr>
+<p>DNS交互报文检测<br>
+思路：挖掘域名字面蕴含的词素(词根、词缀、拼写、缩写)，快速锁定可疑域名。<br>
+本文考虑单词的内在组成结构，选取构词学中最小的有意义的语言词素，作为基本单元，引入自然语言领域的word切割技术，以词素作为字符串切分的最小单元，变长切分域名。</p>
+<p>传统方法：<br>
+黑名单：开销大，及时性差。<br>
+基于DNS活动特征的实时检测：<br>
+1）邮件蠕虫检测方法。<br>
+2）IP地址频繁变化：TTL值，A记录数目及其离散程度<br>
+轻量级检测算法(域名自身字符丰富的词法特征)<br>
+字符串的词法特征：字符串长度、字母数目、数字数目、n元组频率分布。分为词法特征统计和面向域名的word切割方法两类。后者准确度高但是要依赖庞大的语料库。</p>
+<h2><span id="基于词素的轻量级检测算法">基于词素的轻量级检测算法</span></h2>
+<hr>
+<p>合法域名比恶意域名更可能使用词素。<br>
+pipline:<br>
+Step1: 通过聚类算法将待处理的标准域名集各自划分成组<br>
+Step2: 基于构件的词素库，设计启发式字符串切分算法快速切分域名。<br>
+Step3: 提出一组基于词素的特征测度，针对每一组域名，统计测度集合中每一个测度。<br>
+Step4: 监督机器学习算法。</p>
+<h3><span id="域名聚类算法">域名聚类算法</span></h3>
+<p>三层域名标签：<br>
+<a href="http://baike.baidu.com" target="_blank" rel="noopener">baike.baidu.com</a><br>
+com 顶层域名标签；baidu 二层域名标签；baike三层域名标签。<br>
+依据是否具有相同的二层域名标签将域名聚类成组，通过分析组内各三层域名标签中包含的词素特征，<strong>以组为单位</strong>进行检测。</p>
+<h3><span id="启发式字符切分算法">启发式字符切分算法</span></h3>
+<p>1）词素定义<br>
+不可再分的最小的有意义的语言单元定义为词素。<br>
+缩小词素规模的方法：可以分解的词素移出；只保留长度[3,5]范围内的词素。<br>
+处理后剩余87600个词素。<br>
+2）词素匹配与切分<br>
+设计数据结构时优先考虑查询速率，即查询时间优于内存开销。<br>
+3）分类测度选择<br>
+词素平均权重；词素平均相对个数；词素平均长度；非词素字母平均个数；平均记忆字元数；词素频率分布熵</p>
+<h3><span id="分类算法">分类算法</span></h3>
+<p>本文选择决策树中经典的C4.5算法</p>
+<h2><span id="算法评估">算法评估</span></h2>
+<hr>
+<h3><span id="数据集">数据集</span></h3>
+<p>1）实测数据集 1400万个不重复域名。<br>
+2）合法域名集 Alex网站上连续3次排名前1万的域名，并从中去除黑名单中的域名。<br>
+3）恶意域名集<br>
+4）随机数据集</p>
+<h1><span id="基于通信行为分析的dns隧道木马检测方法">基于通信行为分析的DNS隧道木马检测方法</span></h1>
+<hr>
+<h2><span id="摘要">摘要</span></h2>
+<hr>
+<p>DNS隧道技术：利用DNS协议建立隐蔽信道，实现隐蔽数据传输，例如iodine,dns2tcp, tcp-overodns, heyoka等。<br>
+DNS隧道木马检测技术分为两大类：载荷分析和流量监测<br>
+载荷分析：针对DNS请求和应答，对报文中的有效载荷进行分析。<br>
+流量监测：检测网络中DNS流量变化情况。<br>
+本文另辟蹊径，通过分析DNS隧道木马通信行为和正常DNS解析行为的差异性，提出一种基于通信行为分析的DNS隧道木马检测方法。</p>
+<h2><span id="dns隧道木马">DNS隧道木马</span></h2>
+<hr>
+<p>分类：IP直连型、域名型</p>
+<h3><span id="ip直连型dns隧道木马">IP直连型DNS隧道木马</span></h3>
+<p>DNS隧道木马可以与本地主机通过IP直接通信，传输协议采用DNS协议，利用服务器端口53. 被控端利用UDP socket套接字建立连接。</p>
+<h3><span id="域名型dns隧道木马">域名型DNS隧道木马</span></h3>
+<p>被控端将要传输的内容封装在请求的域名中。</p>
+<h2><span id="dns隧道木马通信行为分析">DNS隧道木马通信行为分析</span></h2>
+<p>区分会话的五元组：源IP地址、源端口、传输层协议、目的IP地址、目的端口。<br>
+本文拉长时间维度，从DNS会话角度分析隧道木马流量。<br>
+通过7个通信行为分析DNS隧道木马会话和正常DNS会话的特性。<br>
+1）DNS会话时长<br>
+定义：在一次DNS会话中，最后一个DNS报文的时间和第一个DNS报文的时间差。<br>
+正常情况下,一次 DNS解析过程首先由客户机<br>
+在本 地 随 机 开 启 一 个 UDP 端 口, 然 后 向 指 定 的<br>
+DNS服务器53端口发送 DNS请求报文。<br>
+时长：隧道木马会话时长远大于正常DNS会话<br>
+2）DNS会话中数据包总数<br>
+正常客户的DNS会话比较简短。<br>
+3）“上行大包”占请求报文总数的比例<br>
+上行大包：请求报文中queries字段字节数大于50<br>
+与 正 常 DNS 会 话 相 比, DNS隧道木马会话中“上行大包”占请求报文总数的比例较大<br>
+4）“下行小包”占响应报文总数的比例<br>
+下行小包：将 DNS应答报文中answers字段字节数小于50的数据包。<br>
+DNS隧道木马会话的上传下载比例比一般正常的 DNS会话大<br>
+5）有效载荷的上传下载比<br>
+6）有效载荷部分是否加密<br>
+7）域名对应的主机名数量</p>
+<h2><span id="基于随机森林的决策模型构建">基于随机森林的决策模型构建</span></h2>
+<hr>
+<p>将第二章分析的7个特征提取成评估向量。<br>
+典型的二分类问题。</p>
+<h3><span id="基于随机森林的dns评估向量训练过程">基于随机森林的DNS评估向量训练过程</span></h3>
+<h3><span id="信息增益过程求解">信息增益过程求解</span></h3>
+<h3><span id="dns隧道木马检测流程框架">DNS隧道木马检测流程框架</span></h3>
+<h2><span id="实验分析">实验分析</span></h2>
+<hr>
+<h3><span id="实验环境">实验环境</span></h3>
+<p>测试主机10台，3太植入了隧道木马。</p>
+<h3><span id="检测能力测试">检测能力测试</span></h3>
+<h1><span id="基于统计学习的网络异常行为检测技术">基于统计学习的网络异常行为检测技术</span></h1>
+<hr>
+<h2><span id="摘要">摘要</span></h2>
+<hr>
+<p>高级持续性威胁(APT：advanced persistent threat)<br>
+传统方法：基于特征检测、边界防护<br>
+本文：介绍现状、分析技术路线和体系架构、介绍相关的参数提取和统计分析建模。</p>
+<h2><span id="引言">引言</span></h2>
+<hr>
+<p>传统：基于特征匹配、边界防护<br>
+新兴：基于异常行为的检测(终端异常行为、网络异常行为)<br>
+本文：<br>
+1）提出一种面向APT攻击的网络异常行为检测技术框架(特征建模)<br>
+2）给出特征提取的方法<br>
+3）对算法的有效性进行验证</p>
+<h2><span id="基于统计学习的异常检测技术框架">基于统计学习的异常检测技术框架</span></h2>
+<hr>
+<h3><span id="技术路线选择">技术路线选择</span></h3>
+<p>异常行为检测本质：分类问题<br>
+传统的人工特征提取；基于深度学习的特征提取。<br>
+本文：基于人工特征提取的方法。</p>
+<h3><span id="基于大数据的异常检测技术特点">基于大数据的异常检测技术特点</span></h3>
+<p>准确度低原因：<br>
+1）模型粒度问题<br>
+2）特征数量问题<br>
+3）模型训练问题</p>
+<h3><span id="大数据异常检测平台框架">大数据异常检测平台框架</span></h3>
+<p>数据采集层、存储管理层、入侵行为分析挖掘层、展示及配置管理层</p>
+<h2><span id="网络异常行为检测算法">网络异常行为检测算法</span></h2>
+<hr>
+<p>APT攻击：情报收集、恶意代码组装、投递、激活、安装植入、命令与控制、获取</p>
+<h3><span id="命令与控制通道行为检测">命令与控制通道行为检测</span></h3>
+<h3><span id="反向连接特征">反向连接特征</span></h3>
+<p>定义1：活跃时间点<br>
+定义2：响应率<br>
+定义3：激活率<br>
+定义4：反向连接特征</p>
+<h3><span id="心跳特征">心跳特征</span></h3>
+<h3><span id="获取行为检测">获取行为检测</span></h3>
+<h2><span id="试验结果及分析">试验结果及分析</span></h2>
+<hr>
+<h1><span id="classification-for-dga-based-malicious-domin-names-with-deep-learning-architecture">Classification for DGA-Based malicious Domin Names with Deep Learning Architecture</span></h1>
+<hr>
+<h2><span id="abstract">Abstract</span></h2>
+<hr>
+<p>preemptive defenses: manually-crafted domain features<br>
+this paper: transfer five advanced model</p>
+<h2><span id="introduction">introduction</span></h2>
+<hr>
+<p>statistical features: length, bigram, entropy, life span, character frequency distribution</p>
+<p>distribution:</p>
+<ol>
+<li>without manual creation of features</li>
+<li>a big dataset</li>
+<li>GPU learning and parallel</li>
+<li>transfer learning: Alex, VGG, Squeeze Net, Inception, Res Net</li>
+</ol>
+<h2><span id="background">Background</span></h2>
+<hr>
+<h3><span id="domain-generation-algorithm">Domain Generation Algorithm</span></h3>
+<p>DGA<br>
+DGA classification: using contextual information, using domain names only</p>
+<h3><span id="recurrent-neural-network">Recurrent Neural Network</span></h3>
+<p>RNN -&gt; LSTM</p>
+<h3><span id="deep-learning-architecture">Deep learning architecture</span></h3>
+<p>Alex Net, VGG, Squeeze Net, Google Le Net architecture, Residual Network</p>
+<h2><span id="method">Method</span></h2>
+<hr>
+<h3><span id="transfer-learning">Transfer Learning</span></h3>
+<p>Image Net dataset<br>
+strategies for transferring the pre trained weights from image to DGAs domain names:<br>
+1)string-&gt;byte array 字符串转字节数组<br>
+2)resize [25,25,3 ]<br>
+3)去掉最后两层，以倒数第三层作为特征。<br>
+总结：将原始域名转化成整形数组，投入到预训练好的模型中，生成特性，再训练传统的分类器。(也就是说深度网络只是提取特征)</p>
+<h3><span id="classification">Classification</span></h3>
+<p>SVM， Logistic Regression, Random Forest classifier, Decision Tree</p>
+<h2><span id="experiment">Experiment</span></h2>
+<hr>
+<h3><span id="datasets">Datasets</span></h3>
+<p>non-DGAs: Alexa top 1000,000 domains<br>
+DGAs:  33,000,000 real-world DGA-based malicious<br>
+domain names</p>
+<h3><span id="experimental-setting">Experimental Setting</span></h3>
+<p>three parts: 60% training set; 20% cross validation set; 20% test set</p>
+<h3><span id="results">Results</span></h3>
+<h1><span id="p2p应用流量的高效分类方法研究">P2P应用流量的高效分类方法研究</span></h1>
+<hr>
+<h2><span id="摘要">摘要</span></h2>
+<hr>
+<p>WMFA(滑动窗口多流关联)分类算法，降维，决策树算法，一次分类、二次识别</p>
+<h2><span id="引言">引言</span></h2>
+<hr>
+<p>传统方法：端口和负载特征；基于数据包负载分析的技术；基于主机网络行为进行P2P应用分类；基于机器学习的P2P应用分类。</p>
+<h2><span id="相关工作">相关工作</span></h2>
+<hr>
+<h3><span id="基于端口的p2p应用分类方法">基于端口的P2P应用分类方法</span></h3>
+<p>端口跳变技术、端口的动态使用限制了该技术的使用。</p>
+<h3><span id="基于负载">基于负载</span></h3>
+<p>分析数据包的有效负载。<br>
+加密传输和私有协议限制了发展。</p>
+<h3><span id="基于应用的交互行为">基于应用的交互行为</span></h3>
+<p>盲分类：不考虑端口号，不解析有效负载<br>
+不能满足实时性的要求</p>
+<h3><span id="基于机器学习">基于机器学习</span></h3>
+<p>流特征提取并用机器学习算法来训练。<br>
+朴素贝叶斯方法、KNN、C4.5决策树、谱聚类、SVM</p>
+<h2><span id="wmfa方法本文方法">WMFA方法（本文方法）</span></h2>
+<hr>
+<p>基于滑动时间窗口的多流在线关联方法集成C4.5和多元离群点检测方法，采用信息增益率来选择P2P流量特征，然后使用C4.5对P2P进行一次识别，利用时空关联将已经识别的流来关联未识别的流做二次精确识别。</p>
+<h3><span id="特征选择">特征选择</span></h3>
+<hr>
+<p>采用信息增益率来选择P2P流特征，针对TCP、UDP流量特征分别选出10个特征描述。</p>
+<h3><span id="wmfa分类算法">WMFA分类算法</span></h3>
+<hr>
+<p>主要目的：在线实时挖掘每个时间窗口中误识别的流（离群点检测算法），再进行时空关联将未识别的流标记为已识别的流。<br>
+离群点检测算法：利用$\chi^{2}$ 的计算值，在某个时间窗口中如果一个属性的$\chi^{2}$ 值较大，则将该属性去除。<br>
+时空关联算法：同一个时间窗口上，同一个IP和端口PORT的流中如果有未识别的流，则将其标记为已识别的流。</p>
+<h2><span id="实验及分析">实验及分析</span></h2>
+<hr>
+<h3><span id="评估指标">评估指标</span></h3>
+<p>查准率(precision) P<br>
+查全率(recall)  R</p>
+<h3><span id="数据集">数据集</span></h3>
 
                 
 
@@ -311,7 +533,7 @@ DGA classifier: retrospective detection (using contextual information) and real-
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text"><span id="predicting-domain-generation-algorithms-with-long-short-term-memory-network">Predicting Domain Generation Algorithms with Long Short Term Memory Network</span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text"><span id="abstract">Abstract</span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text"><span id="dga-detection">DGA detection:</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text"><span id="previous-work">previous work:</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.1.3.</span> <span class="toc-nav-text"><span id="this-paper">This paper:</span></span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text"><span id="introduction">Introduction</span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text"><span id="previous-work">Previous work:</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text"><span id="this-paper">This paper:</span></span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text"><span id="background">Background</span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text"><span id="adga">A.DGA</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text"><span id="bdga-classification">B.DGA Classification</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text"><span id="clstm">C.LSTM</span></span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text"><span id="method">Method</span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text"><span id="embedding-layer">embedding layer</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.4.2.</span> <span class="toc-nav-text"><span id="lstm">LSTM</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.4.3.</span> <span class="toc-nav-text"><span id="dropout">Dropout</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.4.4.</span> <span class="toc-nav-text"><span id="logistic-regression">logistic regression</span></span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text"><span id="experimental-setup">Experimental Setup</span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.5.1.</span> <span class="toc-nav-text"><span id="a-evaluation-metrics">A. Evaluation Metrics</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.5.2.</span> <span class="toc-nav-text"><span id="b-experimental-designs">B. Experimental Designs</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.5.3.</span> <span class="toc-nav-text"><span id="c-data">C. Data</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.5.4.</span> <span class="toc-nav-text"><span id="d-comparison-to-state-of-the-art">D. Comparison to state of the art</span></span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text"><span id="results">Results</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.7.</span> <span class="toc-nav-text"><span id="conclusion">Conclusion</span></span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text"><span id="predicting-domain-generation-algorithms-with-long-short-term-memory-network">Predicting Domain Generation Algorithms with Long Short Term Memory Network</span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text"><span id="abstract">Abstract</span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text"><span id="dga-detection">DGA detection:</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text"><span id="previous-work">previous work:</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.1.3.</span> <span class="toc-nav-text"><span id="this-paper">This paper:</span></span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text"><span id="introduction">Introduction</span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text"><span id="previous-work">Previous work:</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text"><span id="this-paper">This paper:</span></span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text"><span id="background">Background</span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text"><span id="adga">A.DGA</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text"><span id="bdga-classification">B.DGA Classification</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text"><span id="clstm">C.LSTM</span></span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text"><span id="method">Method</span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text"><span id="embedding-layer">embedding layer</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.4.2.</span> <span class="toc-nav-text"><span id="lstm">LSTM</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.4.3.</span> <span class="toc-nav-text"><span id="dropout">Dropout</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.4.4.</span> <span class="toc-nav-text"><span id="logistic-regression">logistic regression</span></span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text"><span id="experimental-setup">Experimental Setup</span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.5.1.</span> <span class="toc-nav-text"><span id="a-evaluation-metrics">A. Evaluation Metrics</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.5.2.</span> <span class="toc-nav-text"><span id="b-experimental-designs">B. Experimental Designs</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.5.3.</span> <span class="toc-nav-text"><span id="c-data">C. Data</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.5.4.</span> <span class="toc-nav-text"><span id="d-comparison-to-state-of-the-art">D. Comparison to state of the art</span></span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text"><span id="results">Results</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.7.</span> <span class="toc-nav-text"><span id="conclusion">Conclusion</span></span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text"><span id="&#x57FA;&#x4E8E;&#x8BCD;&#x7D20;&#x7279;&#x5F81;&#x7684;&#x8F7B;&#x91CF;&#x7EA7;&#x57DF;&#x540D;&#x68C0;&#x6D4B;&#x7B97;&#x6CD5;">&#x57FA;&#x4E8E;&#x8BCD;&#x7D20;&#x7279;&#x5F81;&#x7684;&#x8F7B;&#x91CF;&#x7EA7;&#x57DF;&#x540D;&#x68C0;&#x6D4B;&#x7B97;&#x6CD5;</span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text"><span id="&#x6458;&#x8981;">&#x6458;&#x8981;</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text"><span id="&#x57FA;&#x4E8E;&#x8BCD;&#x7D20;&#x7684;&#x8F7B;&#x91CF;&#x7EA7;&#x68C0;&#x6D4B;&#x7B97;&#x6CD5;">&#x57FA;&#x4E8E;&#x8BCD;&#x7D20;&#x7684;&#x8F7B;&#x91CF;&#x7EA7;&#x68C0;&#x6D4B;&#x7B97;&#x6CD5;</span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.2.1.</span> <span class="toc-nav-text"><span id="&#x57DF;&#x540D;&#x805A;&#x7C7B;&#x7B97;&#x6CD5;">&#x57DF;&#x540D;&#x805A;&#x7C7B;&#x7B97;&#x6CD5;</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.2.2.</span> <span class="toc-nav-text"><span id="&#x542F;&#x53D1;&#x5F0F;&#x5B57;&#x7B26;&#x5207;&#x5206;&#x7B97;&#x6CD5;">&#x542F;&#x53D1;&#x5F0F;&#x5B57;&#x7B26;&#x5207;&#x5206;&#x7B97;&#x6CD5;</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.2.3.</span> <span class="toc-nav-text"><span id="&#x5206;&#x7C7B;&#x7B97;&#x6CD5;">&#x5206;&#x7C7B;&#x7B97;&#x6CD5;</span></span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text"><span id="&#x7B97;&#x6CD5;&#x8BC4;&#x4F30;">&#x7B97;&#x6CD5;&#x8BC4;&#x4F30;</span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.3.1.</span> <span class="toc-nav-text"><span id="&#x6570;&#x636E;&#x96C6;">&#x6570;&#x636E;&#x96C6;</span></span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.</span> <span class="toc-nav-text"><span id="&#x57FA;&#x4E8E;&#x901A;&#x4FE1;&#x884C;&#x4E3A;&#x5206;&#x6790;&#x7684;dns&#x96A7;&#x9053;&#x6728;&#x9A6C;&#x68C0;&#x6D4B;&#x65B9;&#x6CD5;">&#x57FA;&#x4E8E;&#x901A;&#x4FE1;&#x884C;&#x4E3A;&#x5206;&#x6790;&#x7684;DNS&#x96A7;&#x9053;&#x6728;&#x9A6C;&#x68C0;&#x6D4B;&#x65B9;&#x6CD5;</span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text"><span id="&#x6458;&#x8981;">&#x6458;&#x8981;</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text"><span id="dns&#x96A7;&#x9053;&#x6728;&#x9A6C;">DNS&#x96A7;&#x9053;&#x6728;&#x9A6C;</span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.2.1.</span> <span class="toc-nav-text"><span id="ip&#x76F4;&#x8FDE;&#x578B;dns&#x96A7;&#x9053;&#x6728;&#x9A6C;">IP&#x76F4;&#x8FDE;&#x578B;DNS&#x96A7;&#x9053;&#x6728;&#x9A6C;</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.2.2.</span> <span class="toc-nav-text"><span id="&#x57DF;&#x540D;&#x578B;dns&#x96A7;&#x9053;&#x6728;&#x9A6C;">&#x57DF;&#x540D;&#x578B;DNS&#x96A7;&#x9053;&#x6728;&#x9A6C;</span></span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text"><span id="dns&#x96A7;&#x9053;&#x6728;&#x9A6C;&#x901A;&#x4FE1;&#x884C;&#x4E3A;&#x5206;&#x6790;">DNS&#x96A7;&#x9053;&#x6728;&#x9A6C;&#x901A;&#x4FE1;&#x884C;&#x4E3A;&#x5206;&#x6790;</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.4.</span> <span class="toc-nav-text"><span id="&#x57FA;&#x4E8E;&#x968F;&#x673A;&#x68EE;&#x6797;&#x7684;&#x51B3;&#x7B56;&#x6A21;&#x578B;&#x6784;&#x5EFA;">&#x57FA;&#x4E8E;&#x968F;&#x673A;&#x68EE;&#x6797;&#x7684;&#x51B3;&#x7B56;&#x6A21;&#x578B;&#x6784;&#x5EFA;</span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.4.1.</span> <span class="toc-nav-text"><span id="&#x57FA;&#x4E8E;&#x968F;&#x673A;&#x68EE;&#x6797;&#x7684;dns&#x8BC4;&#x4F30;&#x5411;&#x91CF;&#x8BAD;&#x7EC3;&#x8FC7;&#x7A0B;">&#x57FA;&#x4E8E;&#x968F;&#x673A;&#x68EE;&#x6797;&#x7684;DNS&#x8BC4;&#x4F30;&#x5411;&#x91CF;&#x8BAD;&#x7EC3;&#x8FC7;&#x7A0B;</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.4.2.</span> <span class="toc-nav-text"><span id="&#x4FE1;&#x606F;&#x589E;&#x76CA;&#x8FC7;&#x7A0B;&#x6C42;&#x89E3;">&#x4FE1;&#x606F;&#x589E;&#x76CA;&#x8FC7;&#x7A0B;&#x6C42;&#x89E3;</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.4.3.</span> <span class="toc-nav-text"><span id="dns&#x96A7;&#x9053;&#x6728;&#x9A6C;&#x68C0;&#x6D4B;&#x6D41;&#x7A0B;&#x6846;&#x67B6;">DNS&#x96A7;&#x9053;&#x6728;&#x9A6C;&#x68C0;&#x6D4B;&#x6D41;&#x7A0B;&#x6846;&#x67B6;</span></span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.5.</span> <span class="toc-nav-text"><span id="&#x5B9E;&#x9A8C;&#x5206;&#x6790;">&#x5B9E;&#x9A8C;&#x5206;&#x6790;</span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.5.1.</span> <span class="toc-nav-text"><span id="&#x5B9E;&#x9A8C;&#x73AF;&#x5883;">&#x5B9E;&#x9A8C;&#x73AF;&#x5883;</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.5.2.</span> <span class="toc-nav-text"><span id="&#x68C0;&#x6D4B;&#x80FD;&#x529B;&#x6D4B;&#x8BD5;">&#x68C0;&#x6D4B;&#x80FD;&#x529B;&#x6D4B;&#x8BD5;</span></span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.</span> <span class="toc-nav-text"><span id="&#x57FA;&#x4E8E;&#x7EDF;&#x8BA1;&#x5B66;&#x4E60;&#x7684;&#x7F51;&#x7EDC;&#x5F02;&#x5E38;&#x884C;&#x4E3A;&#x68C0;&#x6D4B;&#x6280;&#x672F;">&#x57FA;&#x4E8E;&#x7EDF;&#x8BA1;&#x5B66;&#x4E60;&#x7684;&#x7F51;&#x7EDC;&#x5F02;&#x5E38;&#x884C;&#x4E3A;&#x68C0;&#x6D4B;&#x6280;&#x672F;</span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text"><span id="&#x6458;&#x8981;">&#x6458;&#x8981;</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.2.</span> <span class="toc-nav-text"><span id="&#x5F15;&#x8A00;">&#x5F15;&#x8A00;</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.3.</span> <span class="toc-nav-text"><span id="&#x57FA;&#x4E8E;&#x7EDF;&#x8BA1;&#x5B66;&#x4E60;&#x7684;&#x5F02;&#x5E38;&#x68C0;&#x6D4B;&#x6280;&#x672F;&#x6846;&#x67B6;">&#x57FA;&#x4E8E;&#x7EDF;&#x8BA1;&#x5B66;&#x4E60;&#x7684;&#x5F02;&#x5E38;&#x68C0;&#x6D4B;&#x6280;&#x672F;&#x6846;&#x67B6;</span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.3.1.</span> <span class="toc-nav-text"><span id="&#x6280;&#x672F;&#x8DEF;&#x7EBF;&#x9009;&#x62E9;">&#x6280;&#x672F;&#x8DEF;&#x7EBF;&#x9009;&#x62E9;</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.3.2.</span> <span class="toc-nav-text"><span id="&#x57FA;&#x4E8E;&#x5927;&#x6570;&#x636E;&#x7684;&#x5F02;&#x5E38;&#x68C0;&#x6D4B;&#x6280;&#x672F;&#x7279;&#x70B9;">&#x57FA;&#x4E8E;&#x5927;&#x6570;&#x636E;&#x7684;&#x5F02;&#x5E38;&#x68C0;&#x6D4B;&#x6280;&#x672F;&#x7279;&#x70B9;</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.3.3.</span> <span class="toc-nav-text"><span id="&#x5927;&#x6570;&#x636E;&#x5F02;&#x5E38;&#x68C0;&#x6D4B;&#x5E73;&#x53F0;&#x6846;&#x67B6;">&#x5927;&#x6570;&#x636E;&#x5F02;&#x5E38;&#x68C0;&#x6D4B;&#x5E73;&#x53F0;&#x6846;&#x67B6;</span></span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.4.</span> <span class="toc-nav-text"><span id="&#x7F51;&#x7EDC;&#x5F02;&#x5E38;&#x884C;&#x4E3A;&#x68C0;&#x6D4B;&#x7B97;&#x6CD5;">&#x7F51;&#x7EDC;&#x5F02;&#x5E38;&#x884C;&#x4E3A;&#x68C0;&#x6D4B;&#x7B97;&#x6CD5;</span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.4.1.</span> <span class="toc-nav-text"><span id="&#x547D;&#x4EE4;&#x4E0E;&#x63A7;&#x5236;&#x901A;&#x9053;&#x884C;&#x4E3A;&#x68C0;&#x6D4B;">&#x547D;&#x4EE4;&#x4E0E;&#x63A7;&#x5236;&#x901A;&#x9053;&#x884C;&#x4E3A;&#x68C0;&#x6D4B;</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.4.2.</span> <span class="toc-nav-text"><span id="&#x53CD;&#x5411;&#x8FDE;&#x63A5;&#x7279;&#x5F81;">&#x53CD;&#x5411;&#x8FDE;&#x63A5;&#x7279;&#x5F81;</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.4.3.</span> <span class="toc-nav-text"><span id="&#x5FC3;&#x8DF3;&#x7279;&#x5F81;">&#x5FC3;&#x8DF3;&#x7279;&#x5F81;</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.4.4.</span> <span class="toc-nav-text"><span id="&#x83B7;&#x53D6;&#x884C;&#x4E3A;&#x68C0;&#x6D4B;">&#x83B7;&#x53D6;&#x884C;&#x4E3A;&#x68C0;&#x6D4B;</span></span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.5.</span> <span class="toc-nav-text"><span id="&#x8BD5;&#x9A8C;&#x7ED3;&#x679C;&#x53CA;&#x5206;&#x6790;">&#x8BD5;&#x9A8C;&#x7ED3;&#x679C;&#x53CA;&#x5206;&#x6790;</span></span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.</span> <span class="toc-nav-text"><span id="classification-for-dga-based-malicious-domin-names-with-deep-learning-architecture">Classification for DGA-Based malicious Domin Names with Deep Learning Architecture</span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.1.</span> <span class="toc-nav-text"><span id="abstract">Abstract</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.2.</span> <span class="toc-nav-text"><span id="introduction">introduction</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.3.</span> <span class="toc-nav-text"><span id="background">Background</span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.3.1.</span> <span class="toc-nav-text"><span id="domain-generation-algorithm">Domain Generation Algorithm</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.3.2.</span> <span class="toc-nav-text"><span id="recurrent-neural-network">Recurrent Neural Network</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.3.3.</span> <span class="toc-nav-text"><span id="deep-learning-architecture">Deep learning architecture</span></span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.4.</span> <span class="toc-nav-text"><span id="method">Method</span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.4.1.</span> <span class="toc-nav-text"><span id="transfer-learning">Transfer Learning</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.4.2.</span> <span class="toc-nav-text"><span id="classification">Classification</span></span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.5.</span> <span class="toc-nav-text"><span id="experiment">Experiment</span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.5.1.</span> <span class="toc-nav-text"><span id="datasets">Datasets</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.5.2.</span> <span class="toc-nav-text"><span id="experimental-setting">Experimental Setting</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.5.3.</span> <span class="toc-nav-text"><span id="results">Results</span></span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">6.</span> <span class="toc-nav-text"><span id="p2p&#x5E94;&#x7528;&#x6D41;&#x91CF;&#x7684;&#x9AD8;&#x6548;&#x5206;&#x7C7B;&#x65B9;&#x6CD5;&#x7814;&#x7A76;">P2P&#x5E94;&#x7528;&#x6D41;&#x91CF;&#x7684;&#x9AD8;&#x6548;&#x5206;&#x7C7B;&#x65B9;&#x6CD5;&#x7814;&#x7A76;</span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">6.1.</span> <span class="toc-nav-text"><span id="&#x6458;&#x8981;">&#x6458;&#x8981;</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">6.2.</span> <span class="toc-nav-text"><span id="&#x5F15;&#x8A00;">&#x5F15;&#x8A00;</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">6.3.</span> <span class="toc-nav-text"><span id="&#x76F8;&#x5173;&#x5DE5;&#x4F5C;">&#x76F8;&#x5173;&#x5DE5;&#x4F5C;</span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">6.3.1.</span> <span class="toc-nav-text"><span id="&#x57FA;&#x4E8E;&#x7AEF;&#x53E3;&#x7684;p2p&#x5E94;&#x7528;&#x5206;&#x7C7B;&#x65B9;&#x6CD5;">&#x57FA;&#x4E8E;&#x7AEF;&#x53E3;&#x7684;P2P&#x5E94;&#x7528;&#x5206;&#x7C7B;&#x65B9;&#x6CD5;</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">6.3.2.</span> <span class="toc-nav-text"><span id="&#x57FA;&#x4E8E;&#x8D1F;&#x8F7D;">&#x57FA;&#x4E8E;&#x8D1F;&#x8F7D;</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">6.3.3.</span> <span class="toc-nav-text"><span id="&#x57FA;&#x4E8E;&#x5E94;&#x7528;&#x7684;&#x4EA4;&#x4E92;&#x884C;&#x4E3A;">&#x57FA;&#x4E8E;&#x5E94;&#x7528;&#x7684;&#x4EA4;&#x4E92;&#x884C;&#x4E3A;</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">6.3.4.</span> <span class="toc-nav-text"><span id="&#x57FA;&#x4E8E;&#x673A;&#x5668;&#x5B66;&#x4E60;">&#x57FA;&#x4E8E;&#x673A;&#x5668;&#x5B66;&#x4E60;</span></span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">6.4.</span> <span class="toc-nav-text"><span id="wmfa&#x65B9;&#x6CD5;&#x672C;&#x6587;&#x65B9;&#x6CD5;">WMFA&#x65B9;&#x6CD5;&#xFF08;&#x672C;&#x6587;&#x65B9;&#x6CD5;&#xFF09;</span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">6.4.1.</span> <span class="toc-nav-text"><span id="&#x7279;&#x5F81;&#x9009;&#x62E9;">&#x7279;&#x5F81;&#x9009;&#x62E9;</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">6.4.2.</span> <span class="toc-nav-text"><span id="wmfa&#x5206;&#x7C7B;&#x7B97;&#x6CD5;">WMFA&#x5206;&#x7C7B;&#x7B97;&#x6CD5;</span></span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">6.5.</span> <span class="toc-nav-text"><span id="&#x5B9E;&#x9A8C;&#x53CA;&#x5206;&#x6790;">&#x5B9E;&#x9A8C;&#x53CA;&#x5206;&#x6790;</span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">6.5.1.</span> <span class="toc-nav-text"><span id="&#x8BC4;&#x4F30;&#x6307;&#x6807;">&#x8BC4;&#x4F30;&#x6307;&#x6807;</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">6.5.2.</span> <span class="toc-nav-text"><span id="&#x6570;&#x636E;&#x96C6;">&#x6570;&#x636E;&#x96C6;</span></span></a></li></ol></li></ol></li></ol>
         
         </div>
       </aside>
