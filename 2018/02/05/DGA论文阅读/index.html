@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          github+hexo搭建博客教程 - rookicm
+          DGA论文阅读 - rookicm
         
     </title>
 
-    <link rel="canonical" href="http://rookicm.github.io/2017/12/08/github-hexo搭建博客教程/">
+    <link rel="canonical" href="http://rookicm.github.io/2018/02/05/DGA论文阅读/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -91,11 +91,11 @@
                         <div class="tags">
                             
                         </div>
-                        <h1>github+hexo搭建博客教程</h1>
+                        <h1>DGA论文阅读</h1>
                         <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by Meng Cao on
-                            2017-12-08
+                            2018-02-05
                         </span>
                     </div>
                 
@@ -212,81 +212,63 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p>利用了一个空闲的下午，把自己的个人博客搭了起来。之前就知道hexo+github的方式，所以就选择了这个方法。借鉴了google到的几篇教程，加上自己的摸索，成功搭建。写这篇博文，一方面是给后来人以借鉴，另一方面也是总结一下，方便自己下次再用。</p>
-<p>首先给出我的主要参考的几份资料的链接：</p>
-<p>🔗<a href="http://huangnx.com/2016/03/17/BlogPlatByHexoAndGithub/" target="_blank" rel="noopener">建站</a>.<br>
-🔗<a href="http://www.jianshu.com/p/469e985288b3?from=jiantop.com" target="_blank" rel="noopener">更改主题以及写博客</a></p>
-<p>需要指出的是，我的开发环境为MacOS High Sierra, 版本 10.13.1<br>
-Win用户的操作可能有部分不一致。</p>
-<p>步骤如下：</p>
-<h1><span id="github">Github</span></h1>
+                <h1><span id="predicting-domain-generation-algorithms-with-long-short-term-memory-network">Predicting Domain Generation Algorithms with Long Short Term Memory Network</span></h1>
 <hr>
-<ul>
-<li>
-<p>注册Github并配置SSH(步骤不详述)</p>
-</li>
-<li>
-<p>建立仓库(repository),名称必须为：<code>&lt;yourusername&gt;.github,io</code></p>
-</li>
-</ul>
-<h1><span id="安装nodejs和hexo">安装nodejs和hexo</span></h1>
+<h2><span id="abstract">Abstract</span></h2>
 <hr>
-<ul>
-<li>
-<p>安装<a href="https://brew.sh/index_zh-cn.html" target="_blank" rel="noopener">homebrew</a>.（已经安装过则跳过）</p>
-<p>homebrew是mac平台下的包管理工具，使用非常方便。按照官网教程一步即可安装成功。</p>
-</li>
-<li>
-<p>安装nodejs<br>
-<code>$ brew install node</code></p>
-</li>
-<li>
-<p>安装hexo<br>
-<code>$ npm install -g hexo-cli</code></p>
-</li>
-</ul>
-<p>注：建议参考<a href="https://hexo.io/zh-cn/docs/setup.html" target="_blank" rel="noopener">hexo官网</a>安装教程。</p>
-<h1><span id="本地建站">本地建站</span></h1>
+<h3><span id="dga-detection">DGA detection:</span></h3>
+<p>In order to block DGA C2 traffic</p>
+<h3><span id="previous-work">previous work:</span></h3>
+<p>using statistical properties to determine if they are DGA generated.</p>
+<h3><span id="this-paper">This paper:</span></h3>
+<p>A DGA classifier using long short-term memory (LSTM) network for real-time prediction of DGA.</p>
+<h2><span id="introduction">Introduction</span></h2>
 <hr>
-<ul>
-<li>在terminal中将当前目录切换到想要建站的本地位置，例如:<code>cd/Desktop</code></li>
-<li>顺序执行以下每一条命令</li>
-</ul>
-<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hexo init blog</span><br><span class="line">cd blog</span><br><span class="line">npm install</span><br><span class="line">hexo <span class="keyword">generate</span></span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure>
-<ul>
-<li>
-<p>本地站点建立完成</p>
-<p>在浏览器地址栏输入 <code>http://localhost:4000/</code></p>
-</li>
-</ul>
-<h1><span id="部署到github上">部署到github上</span></h1>
+<h3><span id="previous-work">Previous work:</span></h3>
+<p>Blacklists;<br>
+DGA classifier: retrospective detection (using contextual information) and real-time detection(using no additional contextual information )</p>
+<h3><span id="this-paper">This paper:</span></h3>
+<p>LSTM</p>
+<h2><span id="background">Background</span></h2>
 <hr>
-<p>编辑器(Vim、Sublime Text均可)打开本地文件夹中的_config.yml文件，下滑到最后，修改为：</p>
-<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># Deployment</span></span><br><span class="line"><span class="meta">## Docs: https:<span class="comment">//hexo.io/docs/deployment.html</span></span></span><br><span class="line"><span class="symbol">deploy:</span></span><br><span class="line"><span class="symbol">  type:</span> git</span><br><span class="line"><span class="symbol">  repository:</span> https:<span class="comment">//github.com/rookiecm/rookiecm.github.io.git</span></span><br><span class="line"><span class="symbol">  branch:</span> master</span><br></pre></td></tr></table></figure>
-<p>保存后退出，在terminal中逐条执行以下命令.</p>
-<p><code>$ hexo clean</code></p>
-<p><code>$ hexo generate</code></p>
-<p><code>$ hexo deploy</code></p>
-<p>在我的电脑中执行前两条命令均正确，但是执行第三条命令报错如下：<br>
-<code>ERROR Deployer not found: git</code><br>
-后找到<a href="http://blog.csdn.net/weixin_36401046/article/details/52940313" target="_blank" rel="noopener">解决方案</a>：<code>$ npm install --save hexo-deployer-git</code>即可。</p>
-<h1><span id="更换主题">更换主题</span></h1>
+<h3><span id="a-dga">A.  DGA</span></h3>
+<h3><span id="b-dga-classification">B.  DGA Classification</span></h3>
+<ol>
+<li>Retrospective: take advantage of bulk statistical properties or common contextual information</li>
+<li>Real-time: classifying domains individually with no additional contextual information.</li>
+</ol>
+<h3><span id="c-lstm">C. LSTM</span></h3>
+<p><a href="https://www.jianshu.com/p/9dc9f41f0b29" target="_blank" rel="noopener">https://www.jianshu.com/p/9dc9f41f0b29</a></p>
+<h2><span id="method">Method</span></h2>
 <hr>
-<p>网上的教程大多是更换<a href="http://www.jianshu.com/p/469e985288b3?from=jiantop.com" target="_blank" rel="noopener">next主题</a>，此处我选择了另外一个主题<a href="https://github.com/YenYuHsuan/hexo-theme-beantech/" target="_blank" rel="noopener">beantech</a>.</p>
-<p>下载与配置按照作者给出的方法即可。值得一提的是，网站中about的介绍是在source文件夹下进行的，笔者一度找了很久。</p>
-<h1><span id="写博客">写博客</span></h1>
+<h3><span id="embedding-layer">embedding layer</span></h3>
+<p>每个字符由128维的向量表示。<br>
+$Z^l $  --&gt; $R^(d×l) $     //d=128</p>
+<h3><span id="lstm">LSTM</span></h3>
+<h3><span id="dropout">Dropout</span></h3>
+<h3><span id="logistic-regression">logistic regression</span></h3>
+<h2><span id="experimental-setup">Experimental Setup</span></h2>
 <hr>
-<h2><span id="文字编辑">文字编辑</span></h2>
+<p>details of our experimental setups in both binary experiment (DGA vs. non-DGA) and multiclass experiment (which DGA?)</p>
+<h3><span id="a-evaluation-metrics">A. Evaluation Metrics</span></h3>
+<p>Precision, Recall,  F1,  ROC</p>
+<h3><span id="b-experimental-designs">B. Experimental Designs</span></h3>
+<h3><span id="c-data">C. Data</span></h3>
+<p>open  datasets:</p>
+<ol>
+<li>Alexa top 1million domains for training</li>
+<li>OSINT DGA</li>
+</ol>
+<h3><span id="d-comparison-to-state-of-the-art">D. Comparison to state of the art</span></h3>
+<p>对照组：HMM(隐马尔可夫模型)；logistic 回归；random forest(随机森林)<br>
+人工特征：<br>
+1)域名长度(length of domain name)<br>
+2)entropy of character distribution in domain name(字符分布的交叉熵)<br>
+3)元音辅音率(vowel to consonant ratio)</p>
+<h2><span id="results">Results</span></h2>
 <hr>
-<p>首先转化当前路径为<code>source/_posts</code></p>
-<p>然后执行逐条以下命令</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> hexo new post <span class="string">"&lt;post name&gt;"</span> <span class="comment"># you can change post to $ another layout if you want</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> hexo clean &amp;&amp; hexo generate <span class="comment"># generate the static file</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> hexo server <span class="comment"># run hexo in local environment</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> hexo deploy <span class="comment"># hexo will push the static files $ automatically into the specific branch(gh-pages) of your repo!</span></span></span><br></pre></td></tr></table></figure>
-<h2><span id="图像">图像</span></h2>
+<h2><span id="conclusion">Conclusion</span></h2>
 <hr>
-<p>由于github空间有限，所以我们使用图床来上传图片。所谓图床，就可以理解为一个云存储空间，通过一个地址访问。关于各种图床的讨论可以看<a href="https://www.zhihu.com/question/21667151" target="_blank" rel="noopener">这里</a>.这里我使用的是<a href="http://www.tietuku.com" target="_blank" rel="noopener">贴图库</a>，可以直接生成markdown语法下的链接格式。</p>
-<h1><span id="总结">总结</span></h1>
-<hr>
-<p>第一次成功搭建博客还是很开心，希望以后能持续更新。</p>
 
                 
 
@@ -294,13 +276,9 @@ Win用户的操作可能有部分不一致。</p>
                 <!-- Pager -->
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/2018/02/05/DGA论文阅读/" data-toggle="tooltip" data-placement="top" title="DGA论文阅读">&larr; Previous Post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/2017/03/18/hexo-theme-beantech/" data-toggle="tooltip" data-placement="top" title="[Hexo] Theme BeanTech">Next Post &rarr;</a>
+                            <a href="/2017/12/08/github-hexo搭建博客教程/" data-toggle="tooltip" data-placement="top" title="github+hexo搭建博客教程">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -330,7 +308,7 @@ Win用户的操作可能有部分不一致。</p>
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text"><span id="github">Github</span></span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text"><span id="&#x5B89;&#x88C5;nodejs&#x548C;hexo">&#x5B89;&#x88C5;nodejs&#x548C;hexo</span></span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.</span> <span class="toc-nav-text"><span id="&#x672C;&#x5730;&#x5EFA;&#x7AD9;">&#x672C;&#x5730;&#x5EFA;&#x7AD9;</span></span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.</span> <span class="toc-nav-text"><span id="&#x90E8;&#x7F72;&#x5230;github&#x4E0A;">&#x90E8;&#x7F72;&#x5230;github&#x4E0A;</span></span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.</span> <span class="toc-nav-text"><span id="&#x66F4;&#x6362;&#x4E3B;&#x9898;">&#x66F4;&#x6362;&#x4E3B;&#x9898;</span></span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">6.</span> <span class="toc-nav-text"><span id="&#x5199;&#x535A;&#x5BA2;">&#x5199;&#x535A;&#x5BA2;</span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">6.1.</span> <span class="toc-nav-text"><span id="&#x6587;&#x5B57;&#x7F16;&#x8F91;">&#x6587;&#x5B57;&#x7F16;&#x8F91;</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">6.2.</span> <span class="toc-nav-text"><span id="&#x56FE;&#x50CF;">&#x56FE;&#x50CF;</span></span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">7.</span> <span class="toc-nav-text"><span id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</span></span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text"><span id="predicting-domain-generation-algorithms-with-long-short-term-memory-network">Predicting Domain Generation Algorithms with Long Short Term Memory Network</span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text"><span id="abstract">Abstract</span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text"><span id="dga-detection">DGA detection:</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text"><span id="previous-work">previous work:</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.1.3.</span> <span class="toc-nav-text"><span id="this-paper">This paper:</span></span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text"><span id="introduction">Introduction</span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text"><span id="previous-work">Previous work:</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text"><span id="this-paper">This paper:</span></span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text"><span id="background">Background</span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text"><span id="a-dga">A.  DGA</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text"><span id="b-dga-classification">B.  DGA Classification</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text"><span id="c-lstm">C. LSTM</span></span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text"><span id="method">Method</span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text"><span id="embedding-layer">embedding layer</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.4.2.</span> <span class="toc-nav-text"><span id="lstm">LSTM</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.4.3.</span> <span class="toc-nav-text"><span id="dropout">Dropout</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.4.4.</span> <span class="toc-nav-text"><span id="logistic-regression">logistic regression</span></span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text"><span id="experimental-setup">Experimental Setup</span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.5.1.</span> <span class="toc-nav-text"><span id="a-evaluation-metrics">A. Evaluation Metrics</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.5.2.</span> <span class="toc-nav-text"><span id="b-experimental-designs">B. Experimental Designs</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.5.3.</span> <span class="toc-nav-text"><span id="c-data">C. Data</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.5.4.</span> <span class="toc-nav-text"><span id="d-comparison-to-state-of-the-art">D. Comparison to state of the art</span></span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text"><span id="results">Results</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.7.</span> <span class="toc-nav-text"><span id="conclusion">Conclusion</span></span></a></li></ol></li></ol>
         
         </div>
       </aside>
@@ -383,8 +361,8 @@ Win用户的操作可能有部分不一致。</p>
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "your-disqus-ID";
-    var disqus_identifier = "http://rookicm.github.io/2017/12/08/github-hexo搭建博客教程/";
-    var disqus_url = "http://rookicm.github.io/2017/12/08/github-hexo搭建博客教程/";
+    var disqus_identifier = "http://rookicm.github.io/2018/02/05/DGA论文阅读/";
+    var disqus_url = "http://rookicm.github.io/2018/02/05/DGA论文阅读/";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
