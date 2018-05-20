@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          从概率论和博弈论角度思考大话骰 - rookiecm
+          《模糊数学方法及其应用》书摘 - rookiecm
         
     </title>
 
-    <link rel="canonical" href="http://rookicm.github.io/2018/03/06/“从概率论和博弈论角度思考大话骰”/">
+    <link rel="canonical" href="http://rookicm.github.io/2018/05/20/《模糊数学方法及其应用》书摘/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -90,16 +90,16 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#概率论" title="概率论">概率论</a>
+                              <a class="tag" href="/tags/#模糊数学" title="模糊数学">模糊数学</a>
                             
-                              <a class="tag" href="/tags/#棋牌游戏" title="棋牌游戏">棋牌游戏</a>
+                              <a class="tag" href="/tags/#读书" title="读书">读书</a>
                             
                         </div>
-                        <h1>从概率论和博弈论角度思考大话骰</h1>
+                        <h1>《模糊数学方法及其应用》书摘</h1>
                         <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by Meng Cao on
-                            2018-03-06
+                            2018-05-20
                         </span>
                     </div>
                 
@@ -217,72 +217,142 @@
                 post-container">
 
                 <blockquote>
-<p>是谁在夸夸其谈。</p>
+<p>改道的水源头也不回地奔赴下一片绿洲，任由苦守枯井的沙漠子民化成一具具枯骨。时代的齿轮碾过黄粱春梦，巨大的轰鸣声淹没了愚昧者梦碎的呻吟。</p>
 </blockquote>
-<p>最近认识了一个中二文艺青年，教会了我玩大话骰。这个游戏引起了我很大的兴趣，所以我花了一天时间从概率论和博弈论角度思考这个游戏。这里需要指出两点，首先，实际玩大话骰涉及到概率、博弈、心理学等方面。有时候通过察言观色，辅助以所谓的经验就能玩的很好，而本文只是建立在数学基础上的分析。另外大话骰的规则还是很灵活的，我的分析只是建立在我的思考之上，有可能会有考虑不周的情况。如果大家发现了，希望大家指正我。</p>
-<h2><span id="游戏规则">游戏规则</span></h2>
+<h1><span id="模糊数学方法及其应用">模糊数学方法及其应用</span></h1>
+<h2><span id="chapter-1-模糊集的基本概念">Chapter 1 模糊集的基本概念</span></h2>
 <hr>
-<p>假设两个人(编号A,B)玩，每人的杯中有5个骰子，双方只能看到自己的骰子。</p>
-<p>A先猜两个人杯中一共有n个k点，其中n取1到10间的一个整数，k是1到6之间的整数。</p>
-<p>这时B有两种选择：</p>
-<p>1)不相信10个骰子中有n个k或大于n个k点，此时双方摊牌（掀杯），输赢自见分晓。</p>
-<p>2)猜10个骰子中有多余n个k，或者可以猜有n个更大的点数。也就是说要么喊增加n的值，要么喊增加k的值。举个例子，对方喊4个‘2’，你可以喊5个’2’、6个’2’…或者4个3’、4个‘4’…</p>
-<p>1点可以当任意点使用，比如五个骰子的点数是1，2，2，3，4，则可以说有1个‘2’，2个‘4’。这个类似于打扑克牌变色龙中Jack、Queen、King牌。</p>
-<p>如果第一个猜骰子从1点开始猜起，即开始就猜共有N个1点，那么上一条规则作废，即在此轮游戏中，1点不再可以当任意点使用。</p>
-<p>以下文章中分“1点不可以当任意点使用”和“1点可以当任意点使用”分别讨论。</p>
-<h2><span id="1点不可以当任意点使用">1点不可以当任意点使用</span></h2>
+<p>介绍模糊集的基本概念、运算法则、基本定理</p>
+<h3><span id="概述">概述</span></h3>
+<p>将模糊概念定量化、数学化——一种研究和处理模糊概念的数学方法。<br>
+量：确定性——经典数学：微分法、微分方程<br>
+		不确定性——随机性(随机数学)：概率分布方法、马尔可夫链<br>
+					   ——模糊性(模糊数学)</p>
+<h3><span id="模糊理论的数学基础">模糊理论的数学基础</span></h3>
+<p>幂集：集合A的所有子集组成的集合称为A的幂集<br>
+直积：X，Y是两个集合，由X的元素与Y的元素配对成的全体序对组成一个集合，称为X与Y的直积(也称笛卡尔积)<br>
+集合A的特征函数：特征函数是一种特殊的映射，值域为{0,1}; x属于A，值为1；x不属于A, 值为0.<br>
+集合和特征函数互相决定；集合的性质完全由其特征函数决定。<br>
+点-集映射：将点映射为集合。(一对多)<br>
+集合变换：将集合变为集合。<br>
+<strong><em>经典扩张原理</em></strong><br>
+二元关系：集合X, Y: X 和Y的直积的子集R称为X到Y的二元关系。<br>
+等价关系：满足自反性、对称性、传递性的二元关系。<br>
+相似关系：满足自反性、对称性。<br>
+将经典集合A的特征函数的值域由{0,1}推广到[0,1]<br>
+经典集合的特征函数就扩展为模糊集合的隶属函数.<br>
+模糊集的表示法：<br>
+(1) 扎德表示法<br>
+(2) 序偶表示法<br>
+(3) 向量表示法<br>
+截集<br>
+支集：A = { x | A(x) &gt; 0 }<br>
+核：Ker A = {x | A(x) = 1 }<br>
+边界：Bd A = { x | 0&lt; A(x) &lt;1}<br>
+分解原理<br>
+扩张原理<br>
+<strong><em>隶属函数的确定</em></strong><br>
+P28<br>
+隶属度的客观存在性（模糊统计试验）<br>
+隶属函数的确定方法：<br>
+模糊统计方法（方框图法）<br>
+指派方法（偏大型、偏小型、中间型）<br>
+借用已有的客观尺度<br>
+二元对比排序法</p>
+<h2><span id="chapter-2-模糊聚类分析">Chapter 2 模糊聚类分析</span></h2>
 <hr>
-<p>由于自己蛊盅里的骰子是可见的，所以本质上就是分析对面的骰子情况。</p>
-<p>很容易推出:(t为1到6之间的正整数)</p>
-<p>五个骰子中只有零个骰子是某确定点t的概率是<img src="http://i63.tinypic.com/2zegqc4.png" alt="1"></p>
-<p>五个骰子中只有一个骰子是某确定点t的概率是<img src="http://i67.tinypic.com/2njls93.png" alt="2"></p>
-<p>五个骰子中只有两个骰子是某确定点t的概率是<img src="http://i66.tinypic.com/25hk9qx.png" alt="3"></p>
-<p>五个骰子中只有三个骰子是某确定点t的概率是<img src="http://i66.tinypic.com/19ttnk.png" alt="4"></p>
-<p>五个骰子中只有四个骰子是某确定点t的概率是<img src="http://i68.tinypic.com/mwcs9d.png" alt="5"></p>
-<p>五个骰子中只有五个骰子是某确定点t的概率是<img src="http://i67.tinypic.com/2z3qat4.png" alt="6"></p>
-<p>画两个统计图：</p>
-<p><img src="http://i67.tinypic.com/jpkgep.png" alt="7"></p>
-<p><img src="http://i66.tinypic.com/9ft8vd.png" alt="8"></p>
-<p>第二张图表示至少有m个给定数字的概率</p>
-<h3><span id="5个骰子的值全不一样">5个骰子的值全不一样</span></h3>
-<p>举个例子，如果你的骰子是1,2,3,4,5<br>
-你若是猜一共有2个1点，即对方有大于或等于一个1点。那么你正确的概率约为0.4+0.16+0.03+0.003+0.0001=59%</p>
-<p>如果你先猜，某种角度上可以说你比对方多掌握9%的主动权。对方若相信，并继续猜说有3个1点，那么其正确的概率（在你看来）只有约16%。此时，单从概率的角度出发你正确的选择就是掀杯说不信对方有84%的概率是错的。</p>
-<h3><span id="存在2个骰子的值相同">存在2个骰子的值相同</span></h3>
-<p>举个例子，如果你的骰子是1，1，2，3，4。</p>
-<p>你先猜的话，<br>
-若先猜有2个1点，虽然你正确的概率为99%，但是对方必然会向上加，所以这样你相当于丧失了先手优势。</p>
-<p>若先猜有3个1点，那么你正确的概率同样约为59%. 如果对方开你，则你正确的概率为59%;如果对方向上加，即4个1点，则在你看来对方正确的概率约只有19%，所以你应该毫不犹豫的开他。</p>
-<p>所以如果你有一个1点的话，那么不妨第一次就猜共有二个1点，对方若在1点上往上加的话，会有84%，甚至更大的概率是错的。反观，如果你有2个1点，而直接猜共有3个1点，完全理性的对方更容易放弃从1点往上加，掀杯的话，你作为先手，只比对方多了59%-50%=9%的正确的概率。</p>
-<h3><span id="存在3个骰子的值相同">存在3个骰子的值相同</span></h3>
-<p>举个例子，如果你的骰子是1，1，1，3，4。</p>
-<p>你先猜的话，<br>
-若先猜有3个1点，虽然你正确的概率为99%，但是如果对方向上加，你相当于丧失了先手优势。</p>
-<p>若先猜有4个1点，那么你正确的概率约为59%。如果对方开你，则你正确的概率为59%;如果对方向上加，即4个1点，则在你看来对方正确的概率约只有19%，所以你应该毫不犹豫的开他。</p>
-<h3><span id="存在4个骰子的值相同">存在4个骰子的值相同</span></h3>
-<p>分析同上。</p>
-<h3><span id="存在5个骰子的值相同">存在5个骰子的值相同</span></h3>
-<p>分析同上。</p>
-<h2><span id="1点可以当任意点使用">1点可以当任意点使用</span></h2>
+<p>模糊关系<br>
+模糊关系的合成<br>
+模糊聚类分析方法：按照一定的标准(相似程度或亲疏关系)进行分类。<br>
+步骤：<br>
+1、数据标准化<br>
+标准差变换、极差变换、对数变换<br>
+2、标定（建立模糊相似矩阵）<br>
+相似系数法；距离法；主观评分法<br>
+3、聚类（求动态聚类法）<br>
+（1）基于模糊等价矩阵聚类方法<br>
+	 1）传递闭包法<br>
+模糊矩阵的传递闭包：<br>
+	2）布尔矩阵法<br>
+	由模糊相似矩阵作出截矩阵<br>
+（2）直接聚类法<br>
+（3）最大树法<br>
+画出以被分类元素为顶点，以相似矩阵的元素为权重的一颗最大的树。取定阈值，砍断权重低于阈值的枝，得到一个不联通的图，各个联通的分支便构成了在阈值水平上的分类。<br>
+（4）编网法<br>
+取截距阵，主对角线填上元素符号，在主对角线下方，以星号代替1，以空格代替0，由星号向上引纵线，向右引横线，相互联系的点属于同类。<br>
+最佳阈值的确定(P73)</p>
+<h2><span id="chapter-3-模糊模型识别">Chapter 3 模糊模型识别</span></h2>
 <hr>
-<p>‘1’点为特殊点，其余的点相当于等价，所以这里取‘3’点作为一个例子。</p>
-<p>5个骰子中有零个骰子可被当作3点的概率是<img src="http://i64.tinypic.com/2ls8q0.png" alt="9"></p>
-<p>5个骰子中有1个骰子可被当作3点的概率是<img src="http://i68.tinypic.com/2sajzbp.png" alt="10"></p>
-<p>5个骰子中有2个骰子可被当作3点的概率是<img src="http://i63.tinypic.com/2mzh6w6.png" alt="11"></p>
-<p>5个骰子中有3个骰子可被当作3点的概率是<img src="http://i67.tinypic.com/nbentj.png" alt="12"></p>
-<p>5个骰子中有4个骰子可被当作3点的概率是<img src="http://i65.tinypic.com/1znwwt3.png" alt="13"></p>
-<p>5个骰子中有5个骰子可被当作3点的概率是<img src="http://i64.tinypic.com/315ye4g.png" alt="14"></p>
-<p>柱状图就不画了，毕竟我懒！</p>
-<h3><span id="存在2个骰子的值相同">存在2个骰子的值相同</span></h3>
-<p>举个例子，如果你的骰子是 1，2，3，3，6。此时你可以说你有3个‘3’点。</p>
-<p>你若先猜共有四个3点，即对方有一个或更多‘3’点。可以保证你有约86.4%的高正确率，但对方若往上猜，说有5个三点，那么在你看来其正确率也不低,约为53.4%，此时你反到被动了，因为他的正确率比50%高。而你若往上加，即猜有六个’3’，那么你是正确的概率率只剩约为20%。那么此时，你就应该考虑加点数，而不是加个数。通常来说，可以加最大的点数，也就是’6’点，这样对方就没有在点数上调整的余地(当然这也不是绝对的)</p>
-<h3><span id="其他情况">其他情况</span></h3>
-<p>类似分析。</p>
-<h2><span id="总结">总结</span></h2>
+<p>模型识别：事先已知若干标准模型(标准模块库)、有待识别的对象。<br>
+模糊模型识别：在模型识别中，模型是模糊的<br>
+模糊模型识别的两种基本方法：最大隶属度原则和择近原则方法。<br>
+通过待识别对象是否是模糊的，可以将模糊模型识别分为两类。</p>
+<h3><span id="第一类模糊模型识别">第一类模糊模型识别</span></h3>
+<p>模糊向量、最大隶属度原则</p>
+<h3><span id="第二类模糊模型识别">第二类模糊模型识别</span></h3>
+<p>待识别对象也是一个模糊集，即一个模糊集对标准集的识别问题。<br>
+涉及到两个模糊集的贴近程度问题。<br>
+单独使用内积或者外积还不能完全刻画两个模糊集A，B之间的贴近程度。<br>
+格贴近度 = 1/2 * [内积 + 1 - 外积]<br>
+贴近度的改进：贴近度的公理化定义</p>
+<h2><span id="chapter-4-模糊决策">Chapter 4 模糊决策</span></h2>
 <hr>
-<p>由于规则还是很灵活的，所以我在这里的分析其实是很浅薄的，希望对这个问题有研究的小伙伴们积极找我交流。大话骰某种程度上类似于狼人杀，如何做到虚张声势时面不改色可能才是这个游戏的精髓。</p>
-<p>最后，看到这里的朋友，何不一起去喝酒玩骰子呢？</p>
-<p>Have fun ^_^</p>
+<p>从意见集中、二元对比、综合评判三方面对模糊决策做介绍<br>
+目的：把论域中的对象按优劣进行排序，或按照某方法从论域中选择一个令人满意的方案。</p>
+<h3><span id="意见集中">意见集中</span></h3>
+<p>波达数法</p>
+<h3><span id="模糊二元对比决策">模糊二元对比决策</span></h3>
+<p>将两两对比数量化，建立模糊优先关系，排出优劣次序。<br>
+模糊优先关系矩阵（模糊优先关系）</p>
+<h3><span id="模糊综合评价决策">模糊综合评价决策</span></h3>
+<p>理论基础：模糊映射和模糊变换<br>
+综合评判：涉及到多个因素和指标<br>
+分为评总分法和加权评分法<br>
+模糊映射：点集映射的推广，点变为模糊集。<br>
+抹灰变换：集合变换的推广，模糊集变成模糊集。<br>
+三个要素四个步骤：<br>
+1）因素集<br>
+2）评价集<br>
+3）单因素评价<br>
+4）综合评价<br>
+模型改进：<br>
+1）综合方法的改进<br>
+2）多层次模型：建立二级模型<br>
+权重的确定方法：<br>
+1、统计方法：<br>
+1）专家估测法<br>
+2）加权统计方法<br>
+3）频数统计方法<br>
+2、模糊协调决策法<br>
+3、模糊关系方程法<br>
+4、层次分析法AHP<br>
+目标层、准则层、方案层</p>
+<h2><span id="chapter-5-模糊线性规划">Chapter 5 模糊线性规划</span></h2>
+<hr>
+<p>普通线性规划的约束条件和目标函数都是确定的。<br>
+模糊线性规划：约束条件有弹性、目标函数不是单一的、价值系数带有模糊性</p>
+<h3><span id="线性规划模型简介">线性规划模型简介</span></h3>
+<h3><span id="模糊线性规划模型">模糊线性规划模型</span></h3>
+<p>1、资源限量带有模糊性<br>
+即约束条件带有弹：将带有弹性的约束条件模糊化（构造隶属度函数）<br>
+2、多目标线性规划<br>
+用模糊方法求解<br>
+3、价值系数带有模糊性</p>
+<h2><span id="chapter-6-模糊控制">Chapter 6 模糊控制</span></h2>
+<hr>
+<h3><span id="现代控制系统简介">现代控制系统简介</span></h3>
+<p>1、连续时间控制模型<br>
+最短时间问题、最小能量问题、状态调节器问题、跟踪问题。<br>
+2、离散时间控制模型</p>
+<h3><span id="模糊控制器">模糊控制器</span></h3>
+<p>属于智能控制的范畴<br>
+不需要知道被控对象的精确数学模型，控制鲁棒性强<br>
+模糊量化处理：[-Xc, Xc] --&gt; {-6, -4, -2, 0, 2, 4, 6}<br>
+单输入变量的模糊判别：最大隶属度法，加权平均法，中位数法<br>
+多输入变量的模糊判别</p>
+<h2><span id="跋">跋</span></h2>
+<hr>
+<p>毕业设计不知道为什么选到了模糊数学相关的课题，调研了一些paper,感觉都是比较陈旧的内容，所以决定去看一下教材书，选了<a href="https://book.douban.com/subject/1932862/" target="_blank" rel="noopener">《模糊数学方法及其应用》</a>这本书。</p>
 <h2><span id="转载需知">转载需知</span></h2>
 <hr>
 <p>欢迎带出处转载。<br>
@@ -298,13 +368,9 @@
                 <!-- Pager -->
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/2018/05/20/《模糊数学方法及其应用》书摘/" data-toggle="tooltip" data-placement="top" title="《模糊数学方法及其应用》书摘">&larr; Previous Post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/2018/02/05/DGA论文阅读/" data-toggle="tooltip" data-placement="top" title="DGA论文阅读">Next Post &rarr;</a>
+                            <a href="/2018/03/06/“从概率论和博弈论角度思考大话骰”/" data-toggle="tooltip" data-placement="top" title="从概率论和博弈论角度思考大话骰">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -334,7 +400,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text"><span id="&#x6E38;&#x620F;&#x89C4;&#x5219;">&#x6E38;&#x620F;&#x89C4;&#x5219;</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text"><span id="1&#x70B9;&#x4E0D;&#x53EF;&#x4EE5;&#x5F53;&#x4EFB;&#x610F;&#x70B9;&#x4F7F;&#x7528;">1&#x70B9;&#x4E0D;&#x53EF;&#x4EE5;&#x5F53;&#x4EFB;&#x610F;&#x70B9;&#x4F7F;&#x7528;</span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text"><span id="5&#x4E2A;&#x9AB0;&#x5B50;&#x7684;&#x503C;&#x5168;&#x4E0D;&#x4E00;&#x6837;">5&#x4E2A;&#x9AB0;&#x5B50;&#x7684;&#x503C;&#x5168;&#x4E0D;&#x4E00;&#x6837;</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text"><span id="&#x5B58;&#x5728;2&#x4E2A;&#x9AB0;&#x5B50;&#x7684;&#x503C;&#x76F8;&#x540C;">&#x5B58;&#x5728;2&#x4E2A;&#x9AB0;&#x5B50;&#x7684;&#x503C;&#x76F8;&#x540C;</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text"><span id="&#x5B58;&#x5728;3&#x4E2A;&#x9AB0;&#x5B50;&#x7684;&#x503C;&#x76F8;&#x540C;">&#x5B58;&#x5728;3&#x4E2A;&#x9AB0;&#x5B50;&#x7684;&#x503C;&#x76F8;&#x540C;</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text"><span id="&#x5B58;&#x5728;4&#x4E2A;&#x9AB0;&#x5B50;&#x7684;&#x503C;&#x76F8;&#x540C;">&#x5B58;&#x5728;4&#x4E2A;&#x9AB0;&#x5B50;&#x7684;&#x503C;&#x76F8;&#x540C;</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.5.</span> <span class="toc-nav-text"><span id="&#x5B58;&#x5728;5&#x4E2A;&#x9AB0;&#x5B50;&#x7684;&#x503C;&#x76F8;&#x540C;">&#x5B58;&#x5728;5&#x4E2A;&#x9AB0;&#x5B50;&#x7684;&#x503C;&#x76F8;&#x540C;</span></span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.</span> <span class="toc-nav-text"><span id="1&#x70B9;&#x53EF;&#x4EE5;&#x5F53;&#x4EFB;&#x610F;&#x70B9;&#x4F7F;&#x7528;">1&#x70B9;&#x53EF;&#x4EE5;&#x5F53;&#x4EFB;&#x610F;&#x70B9;&#x4F7F;&#x7528;</span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text"><span id="&#x5B58;&#x5728;2&#x4E2A;&#x9AB0;&#x5B50;&#x7684;&#x503C;&#x76F8;&#x540C;">&#x5B58;&#x5728;2&#x4E2A;&#x9AB0;&#x5B50;&#x7684;&#x503C;&#x76F8;&#x540C;</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text"><span id="&#x5176;&#x4ED6;&#x60C5;&#x51B5;">&#x5176;&#x4ED6;&#x60C5;&#x51B5;</span></span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.</span> <span class="toc-nav-text"><span id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.</span> <span class="toc-nav-text"><span id="&#x8F6C;&#x8F7D;&#x9700;&#x77E5;">&#x8F6C;&#x8F7D;&#x9700;&#x77E5;</span></span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text"><span id="&#x6A21;&#x7CCA;&#x6570;&#x5B66;&#x65B9;&#x6CD5;&#x53CA;&#x5176;&#x5E94;&#x7528;">&#x6A21;&#x7CCA;&#x6570;&#x5B66;&#x65B9;&#x6CD5;&#x53CA;&#x5176;&#x5E94;&#x7528;</span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text"><span id="chapter-1-&#x6A21;&#x7CCA;&#x96C6;&#x7684;&#x57FA;&#x672C;&#x6982;&#x5FF5;">Chapter 1 &#x6A21;&#x7CCA;&#x96C6;&#x7684;&#x57FA;&#x672C;&#x6982;&#x5FF5;</span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text"><span id="&#x6982;&#x8FF0;">&#x6982;&#x8FF0;</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text"><span id="&#x6A21;&#x7CCA;&#x7406;&#x8BBA;&#x7684;&#x6570;&#x5B66;&#x57FA;&#x7840;">&#x6A21;&#x7CCA;&#x7406;&#x8BBA;&#x7684;&#x6570;&#x5B66;&#x57FA;&#x7840;</span></span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text"><span id="chapter-2-&#x6A21;&#x7CCA;&#x805A;&#x7C7B;&#x5206;&#x6790;">Chapter 2 &#x6A21;&#x7CCA;&#x805A;&#x7C7B;&#x5206;&#x6790;</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text"><span id="chapter-3-&#x6A21;&#x7CCA;&#x6A21;&#x578B;&#x8BC6;&#x522B;">Chapter 3 &#x6A21;&#x7CCA;&#x6A21;&#x578B;&#x8BC6;&#x522B;</span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text"><span id="&#x7B2C;&#x4E00;&#x7C7B;&#x6A21;&#x7CCA;&#x6A21;&#x578B;&#x8BC6;&#x522B;">&#x7B2C;&#x4E00;&#x7C7B;&#x6A21;&#x7CCA;&#x6A21;&#x578B;&#x8BC6;&#x522B;</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text"><span id="&#x7B2C;&#x4E8C;&#x7C7B;&#x6A21;&#x7CCA;&#x6A21;&#x578B;&#x8BC6;&#x522B;">&#x7B2C;&#x4E8C;&#x7C7B;&#x6A21;&#x7CCA;&#x6A21;&#x578B;&#x8BC6;&#x522B;</span></span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text"><span id="chapter-4-&#x6A21;&#x7CCA;&#x51B3;&#x7B56;">Chapter 4 &#x6A21;&#x7CCA;&#x51B3;&#x7B56;</span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text"><span id="&#x610F;&#x89C1;&#x96C6;&#x4E2D;">&#x610F;&#x89C1;&#x96C6;&#x4E2D;</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.4.2.</span> <span class="toc-nav-text"><span id="&#x6A21;&#x7CCA;&#x4E8C;&#x5143;&#x5BF9;&#x6BD4;&#x51B3;&#x7B56;">&#x6A21;&#x7CCA;&#x4E8C;&#x5143;&#x5BF9;&#x6BD4;&#x51B3;&#x7B56;</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.4.3.</span> <span class="toc-nav-text"><span id="&#x6A21;&#x7CCA;&#x7EFC;&#x5408;&#x8BC4;&#x4EF7;&#x51B3;&#x7B56;">&#x6A21;&#x7CCA;&#x7EFC;&#x5408;&#x8BC4;&#x4EF7;&#x51B3;&#x7B56;</span></span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text"><span id="chapter-5-&#x6A21;&#x7CCA;&#x7EBF;&#x6027;&#x89C4;&#x5212;">Chapter 5 &#x6A21;&#x7CCA;&#x7EBF;&#x6027;&#x89C4;&#x5212;</span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.5.1.</span> <span class="toc-nav-text"><span id="&#x7EBF;&#x6027;&#x89C4;&#x5212;&#x6A21;&#x578B;&#x7B80;&#x4ECB;">&#x7EBF;&#x6027;&#x89C4;&#x5212;&#x6A21;&#x578B;&#x7B80;&#x4ECB;</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.5.2.</span> <span class="toc-nav-text"><span id="&#x6A21;&#x7CCA;&#x7EBF;&#x6027;&#x89C4;&#x5212;&#x6A21;&#x578B;">&#x6A21;&#x7CCA;&#x7EBF;&#x6027;&#x89C4;&#x5212;&#x6A21;&#x578B;</span></span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text"><span id="chapter-6-&#x6A21;&#x7CCA;&#x63A7;&#x5236;">Chapter 6 &#x6A21;&#x7CCA;&#x63A7;&#x5236;</span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.6.1.</span> <span class="toc-nav-text"><span id="&#x73B0;&#x4EE3;&#x63A7;&#x5236;&#x7CFB;&#x7EDF;&#x7B80;&#x4ECB;">&#x73B0;&#x4EE3;&#x63A7;&#x5236;&#x7CFB;&#x7EDF;&#x7B80;&#x4ECB;</span></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.6.2.</span> <span class="toc-nav-text"><span id="&#x6A21;&#x7CCA;&#x63A7;&#x5236;&#x5668;">&#x6A21;&#x7CCA;&#x63A7;&#x5236;&#x5668;</span></span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.7.</span> <span class="toc-nav-text"><span id="&#x8DCB;">&#x8DCB;</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.8.</span> <span class="toc-nav-text"><span id="&#x8F6C;&#x8F7D;&#x9700;&#x77E5;">&#x8F6C;&#x8F7D;&#x9700;&#x77E5;</span></span></a></li></ol></li></ol>
         
         </div>
       </aside>
@@ -354,9 +420,9 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#概率论" title="概率论">概率论</a>
+                          <a class="tag" href="/tags/#模糊数学" title="模糊数学">模糊数学</a>
                         
-                          <a class="tag" href="/tags/#棋牌游戏" title="棋牌游戏">棋牌游戏</a>
+                          <a class="tag" href="/tags/#读书" title="读书">读书</a>
                         
                     </div>
                 </section>
@@ -391,8 +457,8 @@
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "your-disqus-ID";
-    var disqus_identifier = "http://rookicm.github.io/2018/03/06/“从概率论和博弈论角度思考大话骰”/";
-    var disqus_url = "http://rookicm.github.io/2018/03/06/“从概率论和博弈论角度思考大话骰”/";
+    var disqus_identifier = "http://rookicm.github.io/2018/05/20/《模糊数学方法及其应用》书摘/";
+    var disqus_url = "http://rookicm.github.io/2018/05/20/《模糊数学方法及其应用》书摘/";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
