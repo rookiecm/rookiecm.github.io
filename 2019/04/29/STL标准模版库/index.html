@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          Vim tutorial - rookiecm
+          STL标准模版库 - rookiecm
         
     </title>
 
-    <link rel="canonical" href="http://rookicm.github.io/2018/07/09/Vim-tutorial/">
+    <link rel="canonical" href="http://rookicm.github.io/2019/04/29/STL标准模版库/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -90,14 +90,14 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#Linux" title="Linux">Linux</a>
+                              <a class="tag" href="/tags/#C++" title="C++">C++</a>
                             
                         </div>
-                        <h1>Vim tutorial</h1>
+                        <h1>STL标准模版库</h1>
                         <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by Meng Cao on
-                            2018-07-09
+                            2019-04-29
                         </span>
                     </div>
                 
@@ -214,97 +214,120 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p>命令行输入</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">vimtutor</span></span><br></pre></td></tr></table></figure>
-<h2><span id="第一讲">第一讲</span></h2>
-<hr>
-<p>h 左移<br>
-j  下移<br>
-k 上移<br>
-l  右移</p>
-<p>:q!     放弃改动退出<br>
-:wq   保存改动退出<br>
-i    在光标前插入文字<br>
-A  在行末尾插入文字<br>
-x   删除光标所在位置的字符</p>
-<h2><span id="第二讲">第二讲</span></h2>
-<hr>
-<p>dw 从当前光标删除到下一个字符开头（包括字符间的空格，但是不包括下一个字符开头）。<br>
-d$ 从当前光标删除到当前行末尾。<br>
-de 从当前光标删除到当前字符结尾。<br>
-重复一个动作<br>
-operator [number] motion</p>
-<p>数字0  ：移动光标到行首<br>
-撤销操作：u<br>
-撤销在一行中所做的改动：U<br>
-撤销撤销命令 ： CTRL-R</p>
-<h2><span id="第三讲">第三讲</span></h2>
-<hr>
-<p>1、要重新置入已删除的文本内容，按小写字母p键。该操作可以将已删除的文本内容至于光标后。如果最后一次删除的是一个整行，那么该行将置于当前光标所在行的下一行。<br>
-2、要替换光标所在位置的字符，输入小写的r 和要替换原位置的新字符即可。<br>
-3、输入ce 可以替换当前光标到单词末尾的内容；输入c$ 可以替换当前光标到行末的内容。<br>
-4、更改类命令格式：<br>
-				c    [number]    motion</p>
-<h2><span id="第四讲">第四讲</span></h2>
-<hr>
-<p>CTRL-G 显示编辑文件名和文件中光标的位置<br>
-G 直接跳转到文档最后一行<br>
-gg 跳转到文档第一行<br>
-输入行号，输入G   跳转到某一行<br>
-输入/ + 一个字符串，可以在当前文档中查找字符串<br>
-输入 % 可以寻找匹配的括号( [ {</p>
-<p>:s/old/new   可以把光标所在行的第一个old换成new<br>
-:s/old/new/g  可以把光标所在行的所有old换成new<br>
-要替换两行之间所有的匹配串<br>
-:#,#s/old/new/g   其中#,#代表首尾两行的行号<br>
-:%s/old/new/g    替换整个文档中匹配的字符串<br>
-:%s/old/new/gc  替换整个文档中匹配的字符串，并对每个匹配串提示是否进行替换。</p>
-<h2><span id="第五讲">第五讲</span></h2>
-<hr>
-<p>:! 输入shell命令         可以执行该外部命令<br>
-要将文件的改动保存到文件中      w FILENAME<br>
-要保存文本的部分内容：<br>
-step1： 移动光标到本行。<br>
-step2:    接着按v键，移动光标，发现之间的文本被高亮了。<br>
-step3:    按 :  字符。将会看到屏幕底部会出现 :’&lt;, '&gt;<br>
-step4:    输入 w  TEST ,  其中TEST是一个未被使用的文件名，按回车键。<br>
-step5:    这时vim  会把选中的行写入到以TEST命名的文件中去。使用 :! dir<br>
-			  或者 :! ls 确认文件被正确保存。</p>
-<p>提示： 按 v 键使Vim 进入可视模式进行选取。</p>
-<p>在当前文件中插入另外文件的内容，输入 :r FILENAME<br>
-提取进来的文件从光标所在位置开始置入。<br>
-还可以读取外部命令的输出。例如   :r! ls 可以读取ls命令的输出，并放置在光标下.</p>
-<h2><span id="第六讲">第六讲</span></h2>
-<hr>
-<p>输入小写字母o将在光标下打开新的一行，并进入插入模式。<br>
-输入大写字母O将在光标上打开新的一行，并进入插入模式。</p>
-<p>输入a  将在光标后插入<br>
-i    在光标前插入文字<br>
-A  在行末尾插入文字<br>
-输入大写字母R     可以连续替换多个字符。替换模式和插入模式类似，不过每一个输入的字符总会删掉一个已有字符。<br>
-使用操作符y复制文本，使用p粘贴文本.  特别的，yw可以用来复制一个单词。</p>
-<p>设置查找时忽略大小写：<br>
-: set ic<br>
-设置查找时高亮：<br>
-: set hls is<br>
-设置查找时禁用忽略大小写：<br>
-: set noic<br>
-移除匹配项的高亮显示：<br>
-: nohlsearch</p>
-<h2><span id="第七讲">第七讲</span></h2>
-<hr>
-<p>:help 打开帮助文件<br>
-CTRL-W 可以在窗口间跳转<br>
-:q  可以关闭帮助窗口<br>
-输入: 命令时候，按CTRL+D  可以查看可能的补全结果，使用tab键可以使用一个补全。</p>
-<h2><span id="转载需知">转载需知</span></h2>
-<hr>
-<p>欢迎带出处转载。<br>
-作者：rookiecm</p>
-<p>知乎: <a href="https://www.zhihu.com/people/Mr_cm/answers" target="_blank" rel="noopener">Mr cm</a></p>
-<p>Github: <a href="https://github.com/rookiecm" target="_blank" rel="noopener">rookiecm</a></p>
-<p>豆瓣: <a href="https://www.douban.com/people/170712031/" target="_blank" rel="noopener">rookiecm</a></p>
-<p>简书: <a href="https://www.jianshu.com/users/32e24205dabb/timeline" target="_blank" rel="noopener">Mr_cm</a></p>
+                <h1><span id="一些约定">一些约定：</span></h1>
+<p>STL中的begin, end表示左闭右开的区间[begin, end)</p>
+<h1><span id="迭代器">迭代器：</span></h1>
+<p>用于指示容器中元素位置的抽象数据类型。</p>
+<p>分类：<br>
+输入迭代器：用于读取。<br>
+输出迭代器：用于输出。<br>
+前向迭代器：用于读取和输出，可以向前移动。<br>
+双向迭代器：用于读取和输出，可以向前或者向后移动。<br>
+随机访问迭代器：用于读取和输出，可以向前或向后移动任意个位置。</p>
+<p>所有指针都是随机访问迭代器。</p>
+<p>双向迭代器支持：<br>
+解引用 *it<br>
+结构解引用 it-&gt;<br>
+自增 it++, ++it<br>
+相等关系比较 it1==it2, it1 != it2<br>
+随机访问迭代器除了支持上述操作，还支持：<br>
+大小关系比较符：it1&lt;=it2, it1&lt;it2, it1&gt;=it2, it1&gt;it2<br>
+做差：it1 - it2<br>
+加减：it+x, it-x<br>
+加减复合赋值：it+=x, it-=x</p>
+<h1><span id="比较运算符">比较运算符：</span></h1>
+<p>使得结构体能够像基本数据类型一样比较大小。<br>
+STL一般用小于号比较传入的结构体数据类型，即a&lt;b<br>
+struct Type{<br>
+int x, y;<br>
+bool operator&lt;(const Type &amp;other) const{<br>
+return (x&lt;other.x) || (x==other.x &amp;&amp; y&lt;other.y);<br>
+}<br>
+}</p>
+<h1><span id="常用函数">常用函数：</span></h1>
+<h2><span id="较大值较小值">较大值/较小值：</span></h2>
+<p>max/min</p>
+<h2><span id="最大值最小值">最大值/最小值：</span></h2>
+<p>*max_element(begin, end)<br>
+*max_element(begin, end)</p>
+<h2><span id="交换">交换：</span></h2>
+<p>swap(a,b);</p>
+<h2><span id="填充">填充：</span></h2>
+<p>fill(begin, end, value);// O(n)</p>
+<h2><span id="随机化">随机化：</span></h2>
+<p>random_shuffle(begin, end);</p>
+<h2><span id="排序">排序：</span></h2>
+<p>sort(begin, end[, cmp]);   //O(nlogn)  不稳定的排序，例如快排;<br>
+stable_sort(begin, end[, cmp]);  //O(nlogn)  稳定的排序，例如归并排序；<br>
+默认情况下是升序排序；<br>
+cmp函数接受两个参数a,b, 若返回为真，则表示a排在b前面。</p>
+<h2><span id="查找">查找：</span></h2>
+<p>在某一升序区间中查找某个值插入的位置。 O(log n)<br>
+lower_bound(begin, end, value);  //返回第一个大于等于value的位置<br>
+up_bound(begin, end, value);   //返回第一个大于value的位置</p>
+<h2><span id="去重">去重：</span></h2>
+<p>O(n)<br>
+unique(begin, end);   //返回去重后区间的end</p>
+<h2><span id="全排列">全排列：</span></h2>
+<p>next_permutation(begin, end[, compare]);<br>
+将给定区间变成下一个排列，返回true; 如果没有下一个全排列，返回false.<br>
+第一个序列是顺序序列，最后一个序列是逆序序列。</p>
+<h1><span id="数据类型">数据类型：</span></h1>
+<h2><span id="值对">值对:</span></h2>
+<p>pair&lt;int, int&gt; p = make_pair(1,2);</p>
+<h2><span id="字符串">字符串：</span></h2>
+<p>str.length()<br>
+str.subtr(pos, len)<br>
+str1 + str2<br>
+str1 &lt; str2<br>
+str.c_str()  //获得char* 类型的字符数组指针<br>
+str1. find(str2)  //在str1中找到str2, 返回第一次出现的位置。</p>
+<h2><span id="动态数组">动态数组：</span></h2>
+<p>vec.push_back(val)<br>
+vec.pop_back()<br>
+vec[i]<br>
+vec.size()<br>
+vec.begin()<br>
+vec.end()<br>
+vec.insert(iter, val)<br>
+vec.erase(iter)</p>
+<h2><span id="栈">栈：</span></h2>
+<p>s.push(val);<br>
+s.top();<br>
+s.pop();<br>
+s.empty();<br>
+s.size();</p>
+<h2><span id="队列">队列：</span></h2>
+<p>q.push(val)<br>
+q.front() //获得队首的元素<br>
+q.pop()  //删除对手的元素<br>
+q.empty()<br>
+q.size()</p>
+<h2><span id="优先队列">优先队列：</span></h2>
+<p>std::priority_queue<t><br>
+q.push(val);  //在队列中加入一个元素<br>
+q.top();    //获得队列中的最大值<br>
+q.pop();   //删除队列中的最大值<br>
+q.empty();<br>
+q.size();</t></p>
+<h2><span id="双端队列">双端队列：</span></h2>
+<p>std::deque<t><br>
+支持所有std::vector的操作，另外支持：<br>
+q.push_front(val);<br>
+q.pop_front();</t></p>
+<h2><span id="集合">集合：</span></h2>
+<p>std:: set<t><br>
+std:: multiset<t><br>
+集合中元素升序排序，set中每个值只能出现一次，multiset中每个值可以出现多次。<br>
+s.insert(val);<br>
+s.erase(val);   //删除某一个值val<br>
+s.erase(it);      //删除某一迭代器it指向的成员，返回下一个迭代器。<br>
+s.find(val); 	    	//查找某一元素val，如果找到就返回其迭代器。<br>
+s.size();<br>
+s.begin();<br>
+s.end()</t></t></p>
+<p>c++STL中cmp函数总结<br>
+<a href="https://www.ohazyi.com/c_cmp/" target="_blank" rel="noopener">https://www.ohazyi.com/c_cmp/</a></p>
 
                 
 
@@ -312,13 +335,9 @@ CTRL-W 可以在窗口间跳转<br>
                 <!-- Pager -->
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/2019/04/29/STL标准模版库/" data-toggle="tooltip" data-placement="top" title="STL标准模版库">&larr; Previous Post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/2018/06/12/当谈论大学，我们在谈论什么/" data-toggle="tooltip" data-placement="top" title="当谈论大学，我们在谈论什么">Next Post &rarr;</a>
+                            <a href="/2018/07/09/Vim-tutorial/" data-toggle="tooltip" data-placement="top" title="Vim tutorial">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -348,7 +367,7 @@ CTRL-W 可以在窗口间跳转<br>
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text"><span id="&#x7B2C;&#x4E00;&#x8BB2;">&#x7B2C;&#x4E00;&#x8BB2;</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text"><span id="&#x7B2C;&#x4E8C;&#x8BB2;">&#x7B2C;&#x4E8C;&#x8BB2;</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.</span> <span class="toc-nav-text"><span id="&#x7B2C;&#x4E09;&#x8BB2;">&#x7B2C;&#x4E09;&#x8BB2;</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.</span> <span class="toc-nav-text"><span id="&#x7B2C;&#x56DB;&#x8BB2;">&#x7B2C;&#x56DB;&#x8BB2;</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.</span> <span class="toc-nav-text"><span id="&#x7B2C;&#x4E94;&#x8BB2;">&#x7B2C;&#x4E94;&#x8BB2;</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">6.</span> <span class="toc-nav-text"><span id="&#x7B2C;&#x516D;&#x8BB2;">&#x7B2C;&#x516D;&#x8BB2;</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">7.</span> <span class="toc-nav-text"><span id="&#x7B2C;&#x4E03;&#x8BB2;">&#x7B2C;&#x4E03;&#x8BB2;</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">8.</span> <span class="toc-nav-text"><span id="&#x8F6C;&#x8F7D;&#x9700;&#x77E5;">&#x8F6C;&#x8F7D;&#x9700;&#x77E5;</span></span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text"><span id="&#x4E00;&#x4E9B;&#x7EA6;&#x5B9A;">&#x4E00;&#x4E9B;&#x7EA6;&#x5B9A;&#xFF1A;</span></span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text"><span id="&#x8FED;&#x4EE3;&#x5668;">&#x8FED;&#x4EE3;&#x5668;&#xFF1A;</span></span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.</span> <span class="toc-nav-text"><span id="&#x6BD4;&#x8F83;&#x8FD0;&#x7B97;&#x7B26;">&#x6BD4;&#x8F83;&#x8FD0;&#x7B97;&#x7B26;&#xFF1A;</span></span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.</span> <span class="toc-nav-text"><span id="&#x5E38;&#x7528;&#x51FD;&#x6570;">&#x5E38;&#x7528;&#x51FD;&#x6570;&#xFF1A;</span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text"><span id="&#x8F83;&#x5927;&#x503C;&#x8F83;&#x5C0F;&#x503C;">&#x8F83;&#x5927;&#x503C;/&#x8F83;&#x5C0F;&#x503C;&#xFF1A;</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.2.</span> <span class="toc-nav-text"><span id="&#x6700;&#x5927;&#x503C;&#x6700;&#x5C0F;&#x503C;">&#x6700;&#x5927;&#x503C;/&#x6700;&#x5C0F;&#x503C;&#xFF1A;</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.3.</span> <span class="toc-nav-text"><span id="&#x4EA4;&#x6362;">&#x4EA4;&#x6362;&#xFF1A;</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.4.</span> <span class="toc-nav-text"><span id="&#x586B;&#x5145;">&#x586B;&#x5145;&#xFF1A;</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.5.</span> <span class="toc-nav-text"><span id="&#x968F;&#x673A;&#x5316;">&#x968F;&#x673A;&#x5316;&#xFF1A;</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.6.</span> <span class="toc-nav-text"><span id="&#x6392;&#x5E8F;">&#x6392;&#x5E8F;&#xFF1A;</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.7.</span> <span class="toc-nav-text"><span id="&#x67E5;&#x627E;">&#x67E5;&#x627E;&#xFF1A;</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.8.</span> <span class="toc-nav-text"><span id="&#x53BB;&#x91CD;">&#x53BB;&#x91CD;&#xFF1A;</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.9.</span> <span class="toc-nav-text"><span id="&#x5168;&#x6392;&#x5217;">&#x5168;&#x6392;&#x5217;&#xFF1A;</span></span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.</span> <span class="toc-nav-text"><span id="&#x6570;&#x636E;&#x7C7B;&#x578B;">&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF1A;</span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.1.</span> <span class="toc-nav-text"><span id="&#x503C;&#x5BF9;">&#x503C;&#x5BF9;:</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.2.</span> <span class="toc-nav-text"><span id="&#x5B57;&#x7B26;&#x4E32;">&#x5B57;&#x7B26;&#x4E32;&#xFF1A;</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.3.</span> <span class="toc-nav-text"><span id="&#x52A8;&#x6001;&#x6570;&#x7EC4;">&#x52A8;&#x6001;&#x6570;&#x7EC4;&#xFF1A;</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.4.</span> <span class="toc-nav-text"><span id="&#x6808;">&#x6808;&#xFF1A;</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.5.</span> <span class="toc-nav-text"><span id="&#x961F;&#x5217;">&#x961F;&#x5217;&#xFF1A;</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.6.</span> <span class="toc-nav-text"><span id="&#x4F18;&#x5148;&#x961F;&#x5217;">&#x4F18;&#x5148;&#x961F;&#x5217;&#xFF1A;</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.7.</span> <span class="toc-nav-text"><span id="&#x53CC;&#x7AEF;&#x961F;&#x5217;">&#x53CC;&#x7AEF;&#x961F;&#x5217;&#xFF1A;</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.8.</span> <span class="toc-nav-text"><span id="&#x96C6;&#x5408;">&#x96C6;&#x5408;&#xFF1A;</span></span></a></li></ol></li></ol>
         
         </div>
       </aside>
@@ -368,7 +387,7 @@ CTRL-W 可以在窗口间跳转<br>
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#Linux" title="Linux">Linux</a>
+                          <a class="tag" href="/tags/#C++" title="C++">C++</a>
                         
                     </div>
                 </section>
@@ -403,8 +422,8 @@ CTRL-W 可以在窗口间跳转<br>
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "your-disqus-ID";
-    var disqus_identifier = "http://rookicm.github.io/2018/07/09/Vim-tutorial/";
-    var disqus_url = "http://rookicm.github.io/2018/07/09/Vim-tutorial/";
+    var disqus_identifier = "http://rookicm.github.io/2019/04/29/STL标准模版库/";
+    var disqus_url = "http://rookicm.github.io/2019/04/29/STL标准模版库/";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
