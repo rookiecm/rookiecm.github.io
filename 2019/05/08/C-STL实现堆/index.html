@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          STL标准模版库 - rookiecm
+          C++ STL实现堆 - rookiecm
         
     </title>
 
-    <link rel="canonical" href="http://rookicm.github.io/2019/04/29/STL标准模版库/">
+    <link rel="canonical" href="http://rookicm.github.io/2019/05/08/C-STL实现堆/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -93,11 +93,11 @@
                               <a class="tag" href="/tags/#C++" title="C++">C++</a>
                             
                         </div>
-                        <h1>STL标准模版库</h1>
+                        <h1>C++ STL实现堆</h1>
                         <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by Meng Cao on
-                            2019-04-29
+                            2019-05-08
                         </span>
                     </div>
                 
@@ -214,134 +214,31 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1><span id="一些约定">一些约定：</span></h1>
-<p>STL中的begin, end表示左闭右开的区间[begin, end)</p>
-<h1><span id="迭代器">迭代器：</span></h1>
-<p>用于指示容器中元素位置的抽象数据类型。</p>
-<p>分类：<br>
-输入迭代器：用于读取。<br>
-输出迭代器：用于输出。<br>
-前向迭代器：用于读取和输出，可以向前移动。<br>
-双向迭代器：用于读取和输出，可以向前或者向后移动。<br>
-随机访问迭代器：用于读取和输出，可以向前或向后移动任意个位置。</p>
-<p>所有指针都是随机访问迭代器。</p>
-<p>双向迭代器支持：<br>
-解引用 *it<br>
-结构解引用 it-&gt;<br>
-自增 it++, ++it<br>
-相等关系比较 it1==it2, it1 != it2<br>
-随机访问迭代器除了支持上述操作，还支持：<br>
-大小关系比较符：it1&lt;=it2, it1&lt;it2, it1&gt;=it2, it1&gt;it2<br>
-做差：it1 - it2<br>
-加减：it+x, it-x<br>
-加减复合赋值：it+=x, it-=x</p>
-<h1><span id="比较运算符">比较运算符：</span></h1>
-<p>使得结构体能够像基本数据类型一样比较大小。<br>
-STL一般用小于号比较传入的结构体数据类型，即a&lt;b<br>
-struct Type{<br>
-int x, y;<br>
-bool operator&lt;(const Type &amp;other) const{<br>
-return (x&lt;other.x) || (x==other.x &amp;&amp; y&lt;other.y);<br>
-}<br>
-}</p>
-<h1><span id="常用函数">常用函数：</span></h1>
-<h2><span id="较大值较小值">较大值/较小值：</span></h2>
-<p>max/min</p>
-<h2><span id="最大值最小值">最大值/最小值：</span></h2>
-<p>*max_element(begin, end)<br>
-*max_element(begin, end)</p>
-<h2><span id="交换">交换：</span></h2>
-<p>swap(a,b);</p>
-<h2><span id="填充">填充：</span></h2>
-<p>fill(begin, end, value);// O(n)</p>
-<h2><span id="随机化">随机化：</span></h2>
-<p>random_shuffle(begin, end);</p>
-<h2><span id="排序">排序：</span></h2>
-<p>sort(begin, end[, cmp]);   //O(nlogn)  不稳定的排序，例如快排;<br>
-stable_sort(begin, end[, cmp]);  //O(nlogn)  稳定的排序，例如归并排序；<br>
-默认情况下是升序排序；<br>
-cmp函数接受两个参数a,b, 若返回为真，则表示a排在b前面。</p>
-<h2><span id="查找">查找：</span></h2>
-<p>在某一升序区间中查找某个值插入的位置。 O(log n)<br>
-lower_bound(begin, end, value);  //返回第一个大于等于value的位置<br>
-up_bound(begin, end, value);   //返回第一个大于value的位置</p>
-<h2><span id="去重">去重：</span></h2>
-<p>O(n)<br>
-unique(begin, end);   //返回去重后区间的end</p>
-<h2><span id="全排列">全排列：</span></h2>
-<p>next_permutation(begin, end[, compare]);<br>
-将给定区间变成下一个排列，返回true; 如果没有下一个全排列，返回false.<br>
-第一个序列是顺序序列，最后一个序列是逆序序列。</p>
-<h1><span id="数据类型">数据类型：</span></h1>
-<h2><span id="值对">值对:</span></h2>
-<p>pair&lt;int, int&gt; p = make_pair(1,2);</p>
-<h2><span id="字符串">字符串：</span></h2>
-<p>str.length()<br>
-str.subtr(pos, len)<br>
-str1 + str2<br>
-str1 &lt; str2<br>
-str.c_str()  //获得char* 类型的字符数组指针<br>
-str1. find(str2)  //在str1中找到str2, 返回第一次出现的位置。</p>
-<h2><span id="动态数组">动态数组：</span></h2>
-<p>vec.push_back(val)<br>
-vec.pop_back()<br>
-vec[i]<br>
-vec.size()<br>
-vec.begin()<br>
-vec.end()<br>
-vec.insert(iter, val)<br>
-vec.erase(iter)</p>
-<h2><span id="栈">栈：</span></h2>
-<p>s.push(val);<br>
-s.top();<br>
-s.pop();<br>
-s.empty();<br>
-s.size();</p>
-<h2><span id="队列">队列：</span></h2>
-<p>q.push(val)<br>
-q.front() //获得队首的元素<br>
-q.pop()  //删除对手的元素<br>
-q.empty()<br>
-q.size()</p>
-<h2><span id="优先队列">优先队列：</span></h2>
-<p>std::priority_queue<t><br>
-q.push(val);  //在队列中加入一个元素<br>
-q.top();    //获得队列中的最大值<br>
-q.pop();   //删除队列中的最大值<br>
-q.empty();<br>
-q.size();</t></p>
-<h2><span id="双端队列">双端队列：</span></h2>
-<p>std::deque<t><br>
-支持所有std::vector的操作，另外支持：<br>
-q.push_front(val);<br>
-q.pop_front();</t></p>
-<h2><span id="集合">集合：</span></h2>
-<p>std:: set<t><br>
-std:: multiset<t><br>
-集合中元素升序排序，set中每个值只能出现一次，multiset中每个值可以出现多次。<br>
-s.insert(val);<br>
-s.erase(val);   //删除某一个值val<br>
-s.erase(it);      //删除某一迭代器it指向的成员，返回下一个迭代器。<br>
-s.find(val); 	    	//查找某一元素val，如果找到就返回其迭代器。<br>
-s.size();<br>
-s.begin();<br>
-s.end()</t></t></p>
-<p>c++STL中cmp函数总结<br>
-<a href="https://www.ohazyi.com/c_cmp/" target="_blank" rel="noopener">https://www.ohazyi.com/c_cmp/</a></p>
-
+                <h1><span id="利用vector">利用vector</span></h1>
+<p><a href="https://elloop.github.io/c++/2016-11-29/learning-using-stl-72-make-heap" target="_blank" rel="noopener">参考</a></p>
+<p><code>#include &lt;algorithm&gt;</code></p>
+<p><code>make_heap : 指定迭代器区间和一个可选的比较函数创建一个堆 o(n)</code><br>
+<code>push_heap : 指定区间最后一个元素加入到heap中 o(log n)</code><br>
+<code>pop_heap : 弹出堆顶元素，放置在区间末尾 o(log n)</code><br>
+<code>sort_heap : 堆排序算法，反复调用pop_heap实现 o(nlog n)</code><br>
+<code>is_heap : 判断给定区间是否是一个heap o(N)</code><br>
+`is_heap_until : 找出区间中第一个不满足heap条件的位置``</p>
+<h1><span id="利用优先队列priority_queue">利用优先队列priority_queue</span></h1>
+<p><a href="https://zh.cppreference.com/w/cpp/container/priority_queue" target="_blank" rel="noopener">参考</a></p>
+<p>priority_queue其实是对make_heap的封装。</p>
+<p><code>push //插入元素，并对底层容器排序</code></p>
+<p><code>emplace //原位构造元素并底层排序</code></p>
+<p><code>pop //删除第一个元素</code></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;functional&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="function"><span class="keyword">void</span> <span class="title">print_queue</span><span class="params">(T&amp; q)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(!q.empty()) &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; q.top() &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">        q.pop();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::priority_queue&lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> n : &#123;<span class="number">1</span>,<span class="number">8</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">0</span>,<span class="number">9</span>,<span class="number">7</span>,<span class="number">2</span>&#125;)</span><br><span class="line">        q.push(n);</span><br><span class="line"> </span><br><span class="line">    print_queue(q);</span><br><span class="line"> </span><br><span class="line">    <span class="built_in">std</span>::priority_queue&lt;<span class="keyword">int</span>, <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;, <span class="built_in">std</span>::greater&lt;<span class="keyword">int</span>&gt; &gt; q2;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> n : &#123;<span class="number">1</span>,<span class="number">8</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">0</span>,<span class="number">9</span>,<span class="number">7</span>,<span class="number">2</span>&#125;)</span><br><span class="line">        q2.push(n);</span><br><span class="line"> </span><br><span class="line">    print_queue(q2);</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 用 lambda 比较元素。</span></span><br><span class="line">    <span class="comment">//自定义比较函数：与1异或值大的排在前列</span></span><br><span class="line">    <span class="keyword">auto</span> cmp = [](<span class="keyword">int</span> left, <span class="keyword">int</span> right) &#123; <span class="keyword">return</span> (left ^ <span class="number">1</span>) &lt; (right ^ <span class="number">1</span>);&#125;;</span><br><span class="line">    <span class="built_in">std</span>::priority_queue&lt;<span class="keyword">int</span>, <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;, <span class="keyword">decltype</span>(cmp)&gt; q3(cmp);</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> n : &#123;<span class="number">1</span>,<span class="number">8</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">0</span>,<span class="number">9</span>,<span class="number">7</span>,<span class="number">2</span>&#125;)</span><br><span class="line">        q3.push(n);</span><br><span class="line"> </span><br><span class="line">    print_queue(q3);</span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">输出：</span></span><br><span class="line"><span class="comment">9 8 7 6 5 4 3 2 1 0 </span></span><br><span class="line"><span class="comment">0 1 2 3 4 5 6 7 8 9 </span></span><br><span class="line"><span class="comment">8 9 6 7 4 5 2 3 0 1</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
                 
 
                 <hr>
                 <!-- Pager -->
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/2019/05/08/C-STL实现堆/" data-toggle="tooltip" data-placement="top" title="C++ STL实现堆">&larr; Previous Post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/2018/07/09/Vim-tutorial/" data-toggle="tooltip" data-placement="top" title="Vim tutorial">Next Post &rarr;</a>
+                            <a href="/2019/04/29/STL标准模版库/" data-toggle="tooltip" data-placement="top" title="STL标准模版库">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -371,7 +268,7 @@ s.end()</t></t></p>
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text"><span id="&#x4E00;&#x4E9B;&#x7EA6;&#x5B9A;">&#x4E00;&#x4E9B;&#x7EA6;&#x5B9A;&#xFF1A;</span></span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text"><span id="&#x8FED;&#x4EE3;&#x5668;">&#x8FED;&#x4EE3;&#x5668;&#xFF1A;</span></span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.</span> <span class="toc-nav-text"><span id="&#x6BD4;&#x8F83;&#x8FD0;&#x7B97;&#x7B26;">&#x6BD4;&#x8F83;&#x8FD0;&#x7B97;&#x7B26;&#xFF1A;</span></span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.</span> <span class="toc-nav-text"><span id="&#x5E38;&#x7528;&#x51FD;&#x6570;">&#x5E38;&#x7528;&#x51FD;&#x6570;&#xFF1A;</span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text"><span id="&#x8F83;&#x5927;&#x503C;&#x8F83;&#x5C0F;&#x503C;">&#x8F83;&#x5927;&#x503C;/&#x8F83;&#x5C0F;&#x503C;&#xFF1A;</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.2.</span> <span class="toc-nav-text"><span id="&#x6700;&#x5927;&#x503C;&#x6700;&#x5C0F;&#x503C;">&#x6700;&#x5927;&#x503C;/&#x6700;&#x5C0F;&#x503C;&#xFF1A;</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.3.</span> <span class="toc-nav-text"><span id="&#x4EA4;&#x6362;">&#x4EA4;&#x6362;&#xFF1A;</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.4.</span> <span class="toc-nav-text"><span id="&#x586B;&#x5145;">&#x586B;&#x5145;&#xFF1A;</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.5.</span> <span class="toc-nav-text"><span id="&#x968F;&#x673A;&#x5316;">&#x968F;&#x673A;&#x5316;&#xFF1A;</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.6.</span> <span class="toc-nav-text"><span id="&#x6392;&#x5E8F;">&#x6392;&#x5E8F;&#xFF1A;</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.7.</span> <span class="toc-nav-text"><span id="&#x67E5;&#x627E;">&#x67E5;&#x627E;&#xFF1A;</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.8.</span> <span class="toc-nav-text"><span id="&#x53BB;&#x91CD;">&#x53BB;&#x91CD;&#xFF1A;</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.9.</span> <span class="toc-nav-text"><span id="&#x5168;&#x6392;&#x5217;">&#x5168;&#x6392;&#x5217;&#xFF1A;</span></span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.</span> <span class="toc-nav-text"><span id="&#x6570;&#x636E;&#x7C7B;&#x578B;">&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF1A;</span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.1.</span> <span class="toc-nav-text"><span id="&#x503C;&#x5BF9;">&#x503C;&#x5BF9;:</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.2.</span> <span class="toc-nav-text"><span id="&#x5B57;&#x7B26;&#x4E32;">&#x5B57;&#x7B26;&#x4E32;&#xFF1A;</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.3.</span> <span class="toc-nav-text"><span id="&#x52A8;&#x6001;&#x6570;&#x7EC4;">&#x52A8;&#x6001;&#x6570;&#x7EC4;&#xFF1A;</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.4.</span> <span class="toc-nav-text"><span id="&#x6808;">&#x6808;&#xFF1A;</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.5.</span> <span class="toc-nav-text"><span id="&#x961F;&#x5217;">&#x961F;&#x5217;&#xFF1A;</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.6.</span> <span class="toc-nav-text"><span id="&#x4F18;&#x5148;&#x961F;&#x5217;">&#x4F18;&#x5148;&#x961F;&#x5217;&#xFF1A;</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.7.</span> <span class="toc-nav-text"><span id="&#x53CC;&#x7AEF;&#x961F;&#x5217;">&#x53CC;&#x7AEF;&#x961F;&#x5217;&#xFF1A;</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.8.</span> <span class="toc-nav-text"><span id="&#x96C6;&#x5408;">&#x96C6;&#x5408;&#xFF1A;</span></span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text"><span id="&#x5229;&#x7528;vector">&#x5229;&#x7528;vector</span></span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text"><span id="&#x5229;&#x7528;&#x4F18;&#x5148;&#x961F;&#x5217;priority_queue">&#x5229;&#x7528;&#x4F18;&#x5148;&#x961F;&#x5217;priority_queue</span></span></a></li></ol>
         
         </div>
       </aside>
@@ -426,8 +323,8 @@ s.end()</t></t></p>
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "your-disqus-ID";
-    var disqus_identifier = "http://rookicm.github.io/2019/04/29/STL标准模版库/";
-    var disqus_url = "http://rookicm.github.io/2019/04/29/STL标准模版库/";
+    var disqus_identifier = "http://rookicm.github.io/2019/05/08/C-STL实现堆/";
+    var disqus_url = "http://rookicm.github.io/2019/05/08/C-STL实现堆/";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
