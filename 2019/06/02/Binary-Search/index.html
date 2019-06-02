@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Hello, everyone!">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          Binary Search - rookiecm
+        
+    </title>
+
+    <link rel="canonical" href="http://rookicm.github.io/2019/06/02/Binary-Search/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('null')
+            /*post*/
+        
+    }
+    
+    #signature{
+        background-image: url('/img/signature/BeanTechSign-white.png');
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#算法" title="算法">算法</a>
+                            
+                        </div>
+                        <h1>Binary Search</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by Meng Cao on
+                            2019-06-02
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">rookiecm</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1><span id="模版">模版</span></h1>
+<p>二分搜索：<br>
+每次将搜索空间变成原搜索空间的一半，通常要求输入有序。<br>
+时间复杂度：<br>
+O(n) = O(n/2) + O(eval)  —&gt;  O(log(range))*O(eval)<br>
+O(eval)为对每个元素判断是否符合要求的时间复杂度。</p>
+<h2><span id="左闭右开lr">左闭右开[l,r)</span></h2>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#<span class="keyword">return</span> the smallest number m <span class="keyword">in</span> <span class="keyword">range</span> [l,r) such that g(m) <span class="keyword">is</span> <span class="literal">true</span>. <span class="keyword">Return</span> r <span class="keyword">if</span> <span class="keyword">not</span> found.</span><br><span class="line">def binary_search(l,r):</span><br><span class="line">    <span class="keyword">while</span> l &lt; r:</span><br><span class="line">        m = l + (r-l)//<span class="number">2</span></span><br><span class="line">        <span class="keyword">if</span> g(m):</span><br><span class="line">            r = m</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            l = m+<span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> l</span><br></pre></td></tr></table></figure>
+<h2><span id="闭区间">闭区间</span></h2>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># <span class="keyword">return</span> the smallest number m <span class="keyword">in</span> <span class="keyword">range</span> [l,r] such that g[m] <span class="keyword">is</span> <span class="literal">true</span>. <span class="keyword">Return</span> r <span class="keyword">if</span> <span class="keyword">not</span> found</span><br><span class="line">def binary_search(l,r):</span><br><span class="line">    <span class="keyword">while</span> l&lt;=r:</span><br><span class="line">        m = l + (r-l)//<span class="number">2</span></span><br><span class="line">        <span class="keyword">if</span> g[m]:</span><br><span class="line">            r = m-<span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            l = m+<span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> l</span><br></pre></td></tr></table></figure>
+<h2><span id="异同">异同</span></h2>
+<p>两者的区别：</p>
+<ol>
+<li>闭区间模版的循环终止条件是&gt;=, 意味着可能需要比左闭右开的模版多循环一次。</li>
+<li>闭区间满足g[m],更新r=m-1; 左闭右开满足g[m], 则更新为r=m.</li>
+<li>建议使用闭区间的模版，左闭右开模版可能会有溢出的问题。</li>
+</ol>
+<p>相同：</p>
+<ol>
+<li>功能一致</li>
+<li>如果没有找到满足条件的值，返回的l值都等于nums.size().</li>
+</ol>
+<p><strong>通常来说二分法的边界条件容易出错，这边采用这样的思路：<br>
+并不是试图找到准确的答案，而是找到一个分割点m, 使得对所有的n&gt;=m, 条件g[x]都能满足。也就是说m是的g[x]成立的最小值。得到这个满足条件的最小值之后再进行一些判断。</strong></p>
+<p>条件函数g[x]：<br>
+不一定单调，但是存在某一个值m，满足</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if <span class="keyword">x</span> &gt;m, g[<span class="keyword">x</span>]&gt;<span class="number">0</span></span><br><span class="line">else g[<span class="keyword">x</span>]&lt;=<span class="number">0</span></span><br></pre></td></tr></table></figure>
+<h1><span id="upper_bound-lower_bound函数">upper_bound / lower_bound函数</span></h1>
+<figure class="highlight fsharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//the first element in A which A[i] &gt; val</span></span><br><span class="line">upper_bound(A.<span class="keyword">begin</span>(), A.<span class="keyword">end</span>(), <span class="keyword">val</span>)</span><br><span class="line"><span class="comment">//the first element in A which A[i] &gt;= val</span></span><br><span class="line">lower_bound(A.<span class="keyword">begin</span>(), A.<span class="keyword">end</span>(), <span class="keyword">val</span>)</span><br></pre></td></tr></table></figure>
+<p>这两个函数是STL中使用binary search实现的两个函数。二分搜索的题目通常可以化归为“找到第一个&gt;=val” 和&quot;找到第一个&gt;val&quot;这样的pattern, 所以这边给出upper_bound 和 lower_bound的实现。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">upper_bound</span><span class="params">(<span class="keyword">const</span> <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; A, <span class="keyword">int</span> val, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">while</span> (l &lt;= r) &#123;</span><br><span class="line">    <span class="keyword">int</span> m = l + (r - l) / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span> (A[m] &gt; val)</span><br><span class="line">      r = m + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span>      </span><br><span class="line">      l = m + <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> l;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lower_bound</span><span class="params">(<span class="keyword">const</span> <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; A, <span class="keyword">int</span> val, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">while</span> (l &lt;= r) &#123;</span><br><span class="line">    <span class="keyword">int</span> m = l + (r - l) / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span> (A[m] &gt;= val)</span><br><span class="line">      r = m + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      l = m + <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> l;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; A&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">5</span>&#125;;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; lower_bound(A, <span class="number">0</span>, <span class="number">0</span>, A.size()<span class="number">-1</span>) &lt;&lt; <span class="built_in">endl</span>; <span class="comment">// 0</span></span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; lower_bound(A, <span class="number">2</span>, <span class="number">0</span>, A.size()<span class="number">-1</span>) &lt;&lt; <span class="built_in">endl</span>; <span class="comment">// 1</span></span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; lower_bound(A, <span class="number">3</span>, <span class="number">0</span>, A.size()<span class="number">-1</span>) &lt;&lt; <span class="built_in">endl</span>; <span class="comment">// 4</span></span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; upper_bound(A, <span class="number">2</span>, <span class="number">0</span>, A.size()<span class="number">-1</span>) &lt;&lt; <span class="built_in">endl</span>; <span class="comment">// 4</span></span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; upper_bound(A, <span class="number">4</span>, <span class="number">0</span>, A.size()<span class="number">-1</span>) &lt;&lt; <span class="built_in">endl</span>; <span class="comment">// 6</span></span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; upper_bound(A, <span class="number">5</span>, <span class="number">0</span>, A.size()<span class="number">-1</span>) &lt;&lt; <span class="built_in">endl</span>; <span class="comment">// 7</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1><span id="例题">例题</span></h1>
+<p><a href="https://leetcode.com/problems/search-insert-position/" target="_blank" rel="noopener">35. Search Insert Position<br>
+</a></p>
+<p>一个有序数组，找到target的插入位置。</p>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//namely lower_bound</span><br><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">int</span> searchInsert(vector&lt;<span class="built_in">int</span>&gt;&amp; nums, <span class="built_in">int</span> <span class="keyword">target</span>) &#123;</span><br><span class="line">        <span class="built_in">int</span> <span class="built_in">index</span> = lower_bound(nums.begin(), nums.<span class="keyword">end</span>(), <span class="keyword">target</span>) - nums.begin();</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">index</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><a href="https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/" target="_blank" rel="noopener">34. Find First and Last Position of Element in Sorted Array<br>
+</a></p>
+<p>数组有序，且中有相同元素，要求找到某元素出现的首位置和末位置，如果找不到的话返回{-1,-1}.</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt; searchRange(vector&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="keyword">int</span> l = lower_bound(nums.<span class="built_in">begin</span>(), nums.<span class="built_in">end</span>(), target) - nums.<span class="built_in">begin</span>(); <span class="comment">// &gt;=</span></span><br><span class="line">        <span class="built_in">if</span> (l == nums.<span class="built_in">size</span>() || nums[l] != target)</span><br><span class="line">            <span class="built_in">return</span> &#123;<span class="number">-1</span>,<span class="number">-1</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> r = upper_bound(nums.<span class="built_in">begin</span>(), nums.<span class="built_in">end</span>(), target) - nums.<span class="built_in">begin</span>(); <span class="comment">// &gt;</span></span><br><span class="line">        <span class="built_in">return</span> &#123;l, r<span class="number">-1</span>&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><a href="https://leetcode.com/problems/binary-search/" target="_blank" rel="noopener">704. Binary Search<br>
+</a></p>
+<p>binary search找不到返回-1</p>
+<p>解法一：强行使用lower_bound函数</p>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">int</span> search(vector&lt;<span class="built_in">int</span>&gt;&amp; nums, <span class="built_in">int</span> <span class="keyword">target</span>) &#123;</span><br><span class="line">        <span class="built_in">int</span> l = lower_bound(nums.begin(), nums.<span class="keyword">end</span>(), <span class="keyword">target</span>) - nums.begin();</span><br><span class="line">        <span class="keyword">if</span>(l==nums.<span class="built_in">size</span>() || nums[l]<span class="comment">!=target)</span></span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> l;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>解法二：</p>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">int</span> search(vector&lt;<span class="built_in">int</span>&gt;&amp; nums, <span class="built_in">int</span> <span class="keyword">target</span>) &#123;</span><br><span class="line">        <span class="built_in">int</span> l=<span class="number">0</span>, r=nums.<span class="built_in">size</span>()-<span class="number">1</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span>(l&lt;=r) &#123;</span><br><span class="line">            <span class="built_in">int</span> m = l + (r-l) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(nums[m]==<span class="keyword">target</span>) <span class="keyword">return</span> m;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span>(nums[m] &gt; <span class="keyword">target</span>)</span><br><span class="line">                r = m - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                l = m + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/2019/06/01/线段树Segmentation-Tree/" data-toggle="tooltip" data-placement="top" title="线段树Segmentation Tree">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                    <div class="comment">
+                        <div id="disqus_thread" class="disqus-thread"></div>
+                    </div>
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text"><span id="&#x6A21;&#x7248;">&#x6A21;&#x7248;</span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text"><span id="&#x5DE6;&#x95ED;&#x53F3;&#x5F00;lr">&#x5DE6;&#x95ED;&#x53F3;&#x5F00;[l,r)</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text"><span id="&#x95ED;&#x533A;&#x95F4;">&#x95ED;&#x533A;&#x95F4;</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text"><span id="&#x5F02;&#x540C;">&#x5F02;&#x540C;</span></span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text"><span id="upper_bound-lower_bound&#x51FD;&#x6570;">upper_bound / lower_bound&#x51FD;&#x6570;</span></span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.</span> <span class="toc-nav-text"><span id="&#x4F8B;&#x9898;">&#x4F8B;&#x9898;</span></span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#算法" title="算法">算法</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="http://beantech.org" target="_blank">Bean Tech</a></li>
+                    
+                        <li><a href="http://blog.kaijun.rocks" target="_blank">Kaijun&#39;s Blog</a></li>
+                    
+                        <li><a href="http://huangxuan.me" target="_blank">Hux Blog</a></li>
+                    
+                        <li><a href="#" target="_blank">It Helps SEO</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- disqus embedded js code start (one page only need to embed once) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "your-disqus-ID";
+    var disqus_identifier = "http://rookicm.github.io/2019/06/02/Binary-Search/";
+    var disqus_url = "http://rookicm.github.io/2019/06/02/Binary-Search/";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus embedded js code start end -->
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/rookiecm">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Meng Cao 2019 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    re-Ported by <a href="http://beantech.org">BeanTech</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=YenYuHsuan&repo=hexo-theme-beantech&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://rookicm.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="http://rookicm.github.io/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
