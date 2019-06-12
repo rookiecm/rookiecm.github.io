@@ -144,14 +144,14 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -214,7 +214,7 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1><span id="192-word-frequency"></span></h1>
+                <p><a href="https://leetcode.com/problems/word-frequency/" target="_blank" rel="noopener">192. Word Frequency</a></p>
 <p>Write a bash script to calculate the frequency of each word in a text file words.txt.</p>
 <p>For simplicity sake, you may assume:</p>
 <p>words.txt contains only lowercase characters and space ’ ’ characters.<br>
@@ -238,7 +238,7 @@ tr : 转换或删除文件中的字符; -s: 缩减连续重复的字符成制定
 uniq : 重复数据只取一个; -i : 忽略大小写； -c: 进行计数。<br>
 sort : 排序； -r: 反向排序<br>
 awk: 每次处理一行，处理最小单位为字段。</p>
-<h1><span id="193-valid-phone-numbers"></span></h1>
+<p><a href="https://leetcode.com/problems/valid-phone-numbers/" target="_blank" rel="noopener">193. Valid Phone Numbers</a></p>
 <p>Given a text file file.txt that contains list of phone numbers (one per line), write a one liner bash script to print all valid phone numbers.</p>
 <p>You may assume that a valid phone number must appear in one of the following two formats: (xxx) xxx-xxxx or xxx-xxx-xxxx. (x means a digit)</p>
 <p>You may also assume each line in the text file must not contain leading or trailing white spaces.</p>
@@ -252,8 +252,8 @@ Your script should output the following valid phone numbers:</p>
 (123) 456-7890</p>
 <p>分析：正则表达式匹配，其实后面都一样，只是前面可能是(xxx) 或者xxx-.</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> Read from the file file.txt and output all valid phone numbers to stdout.</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">Solution 1:</span></span><br><span class="line"><span class="meta">#</span><span class="bash">awk <span class="string">'/^([0-9]&#123;3&#125;-|\([0-9]&#123;3&#125;\) )[0-9]&#123;3&#125;-[0-9]&#123;4&#125;$/'</span> file.txt </span></span><br><span class="line"><span class="meta">#</span><span class="bash">正则表达式匹配<span class="string">'//'</span>; |：或运算符, (A|B)； [0-9]&#123;3&#125;: 3个0-9的数字； \(: 转义运算符，显示给出(的意思。^: 行开头； $:行末尾</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">Solution 2:</span></span><br><span class="line"><span class="meta">#</span><span class="bash">sed -n -r <span class="string">'/^([0-9]&#123;3&#125;-|\([0-9]&#123;3&#125;\) )[0-9]&#123;3&#125;-[0-9]&#123;4&#125;$/p'</span> file.txt </span></span><br><span class="line"><span class="meta">#</span><span class="bash">-n 表示关闭默认输出； -r 表示支持正则扩展; 正则表达式后面多了一个p, 在用sed时， p和-n合用，表示打印某一行.</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">Solution 3:</span></span><br><span class="line">grep -P '^(\d&#123;3&#125;-|\(\d&#123;3&#125;\) )\d&#123;3&#125;-\d&#123;4&#125;$' file.txt</span><br></pre></td></tr></table></figure>
-<h1><span id="194-transpose-file"></span></h1>
-<p>Given a text file file.txt, transpose its content.</p>
+<p><a href="https://leetcode.com/problems/transpose-file/" target="_blank" rel="noopener">194. Transpose File</a><br>
+Given a text file file.txt, transpose its content.</p>
 <p>You may assume that each row has the same number of columns and each field is separated by the ’ ’ character.</p>
 <p>Example:</p>
 <p>If file.txt has the following content:</p>
@@ -268,7 +268,7 @@ age 21 30</p>
 NR表示已读出的行数，编号从1开始；<br>
 这个for循环与常规循环不一样，需要循环NR*NF次数；在这边也就是1，2，1，2，1，2这样的情况。</p>
 <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">i</span> = <span class="number">1</span>, s = [name]</span><br><span class="line"><span class="attr">i</span> = <span class="number">2</span>, s = [name; age]</span><br><span class="line"><span class="attr">i</span> = <span class="number">1</span>, s = [name alice; age]</span><br><span class="line"><span class="attr">i</span> = <span class="number">2</span>, s = [name alice; age <span class="number">21</span>]</span><br><span class="line"><span class="attr">i</span> = <span class="number">1</span>, s = [name alice ryan; age <span class="number">21</span>]</span><br><span class="line"><span class="attr">i</span> = <span class="number">2</span>, s = [name alice ryan; age <span class="number">21</span> <span class="number">30</span>]</span><br></pre></td></tr></table></figure>
-<h1><span id="195-tenth-line"></span></h1>
+<p><a href="https://leetcode.com/problems/tenth-line/" target="_blank" rel="noopener">195. Tenth Line</a></p>
 <p>Given a text file file.txt, print just the 10th line of the file.</p>
 <p>Example:</p>
 <p>Assume that file.txt has the following content:</p>
@@ -328,7 +328,7 @@ head -n -3 file.txt： 打印file文件除了最后三行的所有内容</p>
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text"><span id="192-word-frequency"></span></span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text"><span id="193-valid-phone-numbers"></span></span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.</span> <span class="toc-nav-text"><span id="194-transpose-file"></span></span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.</span> <span class="toc-nav-text"><span id="195-tenth-line"></span></span></a></li></ol>
+          <ol class="nav">none</ol>
         
         </div>
       </aside>
