@@ -72,13 +72,6 @@
     </url>
 
     <url>
-        <loc>http://rookicm.github.io/tags/%E7%AE%97%E6%B3%95/</loc>
-        <lastmod>2019-06-02T08:01:39.576Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>http://rookicm.github.io/tags/shell/</loc>
         <lastmod>2019-06-12T02:15:53.554Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -88,6 +81,13 @@
     <url>
         <loc>http://rookicm.github.io/tags/%E9%9A%8F%E7%AC%94/</loc>
         <lastmod>2019-06-12T11:08:37.223Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://rookicm.github.io/tags/%E7%AE%97%E6%B3%95/</loc>
+        <lastmod>2019-06-14T06:33:14.051Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
