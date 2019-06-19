@@ -142,7 +142,7 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -156,7 +156,7 @@
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -287,6 +287,14 @@ Win用户的操作可能有部分不一致。</p>
 <h1><span id="总结">总结</span></h1>
 <hr>
 <p>第一次成功搭建博客还是很开心，希望以后能持续更新。</p>
+<h1><span id="20190619update">20190619Update</span></h1>
+<p>错误：hexo d出现错误failed to connect to <a href="http://github.com" target="_blank" rel="noopener">github.com</a> port 443: Timed out</p>
+<p>解法：<a href="http://www.taoxiaolin.com/2017/04/18/%E4%BD%BF%E7%94%A8github%20+%20hexo%20%E6%90%AD%E5%BB%BA%E5%AE%8C%E5%85%A8%E5%85%8D%E8%B4%B9%E3%80%81%E5%AE%9E%E7%94%A8%E7%9A%84%E5%8D%9A%E5%AE%A2/" target="_blank" rel="noopener">参考</a><br>
+将在_config.yml文件中的deploy部分改成(原先repo部分是https://)</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">deploy</span>:</span><br><span class="line">  <span class="attribute">type</span>: git</span><br><span class="line">  <span class="attribute">repo</span>: git<span class="variable">@github</span>.<span class="attribute">com</span>:yourname/yourname.github.io.git</span><br><span class="line">  <span class="attribute">branch</span>: master</span><br></pre></td></tr></table></figure>
+<p>此时出现第二个问题：</p>
+<p>Error: <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>: Permission denied (publickey). fatal: Could not read from remote repository.</p>
+<p>这个问题比较好解决，<a href="https://www.jianshu.com/p/3b56f4e6ac77" target="_blank" rel="noopener">参考</a></p>
 
                 
 
@@ -330,7 +338,7 @@ Win用户的操作可能有部分不一致。</p>
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text"><span id="github">Github</span></span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text"><span id="&#x5B89;&#x88C5;nodejs&#x548C;hexo">&#x5B89;&#x88C5;nodejs&#x548C;hexo</span></span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.</span> <span class="toc-nav-text"><span id="&#x672C;&#x5730;&#x5EFA;&#x7AD9;">&#x672C;&#x5730;&#x5EFA;&#x7AD9;</span></span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.</span> <span class="toc-nav-text"><span id="&#x90E8;&#x7F72;&#x5230;github&#x4E0A;">&#x90E8;&#x7F72;&#x5230;github&#x4E0A;</span></span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.</span> <span class="toc-nav-text"><span id="&#x66F4;&#x6362;&#x4E3B;&#x9898;">&#x66F4;&#x6362;&#x4E3B;&#x9898;</span></span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">6.</span> <span class="toc-nav-text"><span id="&#x5199;&#x535A;&#x5BA2;">&#x5199;&#x535A;&#x5BA2;</span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">6.1.</span> <span class="toc-nav-text"><span id="&#x6587;&#x5B57;&#x7F16;&#x8F91;">&#x6587;&#x5B57;&#x7F16;&#x8F91;</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">6.2.</span> <span class="toc-nav-text"><span id="&#x56FE;&#x50CF;">&#x56FE;&#x50CF;</span></span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">7.</span> <span class="toc-nav-text"><span id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</span></span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text"><span id="github">Github</span></span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text"><span id="&#x5B89;&#x88C5;nodejs&#x548C;hexo">&#x5B89;&#x88C5;nodejs&#x548C;hexo</span></span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.</span> <span class="toc-nav-text"><span id="&#x672C;&#x5730;&#x5EFA;&#x7AD9;">&#x672C;&#x5730;&#x5EFA;&#x7AD9;</span></span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">4.</span> <span class="toc-nav-text"><span id="&#x90E8;&#x7F72;&#x5230;github&#x4E0A;">&#x90E8;&#x7F72;&#x5230;github&#x4E0A;</span></span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">5.</span> <span class="toc-nav-text"><span id="&#x66F4;&#x6362;&#x4E3B;&#x9898;">&#x66F4;&#x6362;&#x4E3B;&#x9898;</span></span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">6.</span> <span class="toc-nav-text"><span id="&#x5199;&#x535A;&#x5BA2;">&#x5199;&#x535A;&#x5BA2;</span></span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">6.1.</span> <span class="toc-nav-text"><span id="&#x6587;&#x5B57;&#x7F16;&#x8F91;">&#x6587;&#x5B57;&#x7F16;&#x8F91;</span></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">6.2.</span> <span class="toc-nav-text"><span id="&#x56FE;&#x50CF;">&#x56FE;&#x50CF;</span></span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">7.</span> <span class="toc-nav-text"><span id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</span></span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">8.</span> <span class="toc-nav-text"><span id="20190619update">20190619Update</span></span></a></li></ol>
         
         </div>
       </aside>

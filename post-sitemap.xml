@@ -7,6 +7,14 @@
     </url>
 
     <url>
+        <loc>http://rookicm.github.io/2017/12/08/github-hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/</loc>
+        <lastmod>2019-06-19T03:21:27.382Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://rookicm.github.io/2019/06/19/%E5%BF%AB%E9%80%9F%E5%B9%82%E7%AE%97%E6%B3%95/</loc>
         <lastmod>2019-06-19T02:45:10.299Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -129,14 +137,6 @@
     <url>
         <loc>http://rookicm.github.io/2017/03/18/hexo-theme-beantech/</loc>
         <lastmod>2018-02-05T06:55:52.032Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://rookicm.github.io/2017/12/08/github-hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/</loc>
-        <lastmod>2017-12-18T13:51:27.929Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
