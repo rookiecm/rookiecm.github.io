@@ -136,14 +136,14 @@
 
                         
                         <li>
-                            <a href="/about/">About</a>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
+                            <a href="/about/">About</a>
                         </li>
                         
                     
@@ -210,6 +210,35 @@
             
                 <!-- Main Content -->
 
+
+<div class="post-preview">
+
+    <a href="/2019/07/14/一类特殊的BFS/">
+        <h2 class="post-title">
+            一类特殊的BFS
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            通常来说，BFS模版如下：
+1234567891011121314151617q = new Queue()seen = new HashSet()q.add(start)seen.add(start)steps = 0while not q.empty():    size = q.size()    while size-- &gt; 0:        state = q.pop() ......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Meng Cao on
+            2019-07-14
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#算法" title="算法">算法</a>
+            
+        </div>
+    
+
+</div>
+<hr>
 
 <div class="post-preview">
 
@@ -515,41 +544,6 @@ O(eval)为对每个元素判断是否符合要求的时间复杂度。
 </div>
 <hr>
 
-<div class="post-preview">
-
-    <a href="/2019/05/08/C-STL实现堆/">
-        <h2 class="post-title">
-            C++ STL实现堆
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            利用vector
-参考
-#include &lt;algorithm&gt;
-make_heap : 指定迭代器区间和一个可选的比较函数创建一个堆 o(n)
-push_heap : 指定区间最后一个元素加入到heap中 o(log n)
-pop_heap : 弹出堆顶元素，放置在区间末尾 o(log n)
-sort_heap : 堆排序算法，反复调用pop_heap实现 o(nlog n)
-......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Meng Cao on
-            2019-05-08
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#C++" title="C++">C++</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
 
 
 <!-- Pager -->
@@ -586,17 +580,17 @@ sort_heap : 堆排序算法，反复调用pop_heap实现 o(nlog n)
     <div class="tags">
         
             
-            <a href="/tags/#算法" title="算法" rel="7">算法</a>
-            
-        
-            
-        
-            
-        
+            <a href="/tags/#算法" title="算法" rel="8">算法</a>
             
         
             
             <a href="/tags/#C++" title="C++" rel="2">C++</a>
+            
+        
+            
+        
+            
+        
             
         
             
@@ -669,6 +663,10 @@ sort_heap : 堆排序算法，反复调用pop_heap实现 o(nlog n)
     <ul>
       
         <li>
+          <a href="/2019/07/14/一类特殊的BFS/">一类特殊的BFS</a>
+        </li>
+      
+        <li>
           <a href="/2019/07/07/最短路径问题/">最短路径问题</a>
         </li>
       
@@ -682,10 +680,6 @@ sort_heap : 堆排序算法，反复调用pop_heap实现 o(nlog n)
       
         <li>
           <a href="/2019/06/14/Leetcode-4-Median-of-Two-Sorted-Arrays/">Leetcode 4. Median of Two Sorted Arrays</a>
-        </li>
-      
-        <li>
-          <a href="/2019/06/12/keep-calm-and-code-on/">keep calm and code on</a>
         </li>
       
     </ul>
