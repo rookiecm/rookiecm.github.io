@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          keep calm and code on - rookiecm
+          python broadcast - rookiecm
         
     </title>
 
-    <link rel="canonical" href="http://rookicm.github.io/2019/06/12/keep-calm-and-code-on/">
+    <link rel="canonical" href="http://rookicm.github.io/2019/08/07/python-broadcast/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -90,14 +90,14 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#随笔" title="随笔">随笔</a>
+                              <a class="tag" href="/tags/#python" title="python">python</a>
                             
                         </div>
-                        <h1>keep calm and code on</h1>
+                        <h1>python broadcast</h1>
                         <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by Meng Cao on
-                            2019-06-12
+                            2019-08-07
                         </span>
                     </div>
                 
@@ -214,14 +214,23 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p>最近有些焦虑，虽然不是很严重，但也是也影响了自己的工作效率。深切的感觉到自己要补的东西还很多，也会去回忆一些曾经做过的选择，从现在这个角度来看其实可以规划得更好。</p>
-<p>希望自己能摆脱这样无意义的懊悔，调节好情绪，继续加油。列一下想补充的方向吧：</p>
+                <h1><span id="广播broadcasting">广播（broadcasting）</span></h1>
+<p>指的是不同形状的数组之间的算术运算的执行方式。</p>
+<h1><span id="广播的原则">广播的原则：</span></h1>
+<p>两个数组从后向前对比，每个维度数组兼容，当：</p>
 <ol>
-<li>算法题：多看公开课；多刷题；多看书。</li>
-<li>数学：有时间复习一下说概率论与统计，一定要找时间看完herd on the street.</li>
-<li>系统方面：csapp希望配合公开课Lab能坚持下去吧。</li>
-<li>personal project: python的话从头撸一个faster rcnn.</li>
+<li>数值相等</li>
+<li>或其中一个数值为1<br>
+如果较短的数组维度遍历完毕，则可以广播，否则抛出ValueError: frames are not aligned异常</li>
 </ol>
+<p>当比较的任何一个维度为1时，则使用另一个。换句话说，大小为1的维被拉伸或“复制”以匹配另一维。</p>
+<h1><span id="example">Example</span></h1>
+<p>可以构成广播的例子：</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">A      (<span class="number">2</span>d array):  <span class="number">5</span> <span class="keyword">x</span> <span class="number">4</span></span><br><span class="line">B      (<span class="number">1</span>d array):      <span class="number">1</span></span><br><span class="line">Result (<span class="number">2</span>d array):  <span class="number">5</span> <span class="keyword">x</span> <span class="number">4</span></span><br><span class="line"></span><br><span class="line">A      (<span class="number">2</span>d array):  <span class="number">5</span> <span class="keyword">x</span> <span class="number">4</span></span><br><span class="line">B      (<span class="number">1</span>d array):      <span class="number">4</span></span><br><span class="line">Result (<span class="number">2</span>d array):  <span class="number">5</span> <span class="keyword">x</span> <span class="number">4</span></span><br><span class="line"></span><br><span class="line">A      (<span class="number">3</span>d array):  <span class="number">15</span> <span class="keyword">x</span> <span class="number">3</span> <span class="keyword">x</span> <span class="number">5</span></span><br><span class="line">B      (<span class="number">3</span>d array):  <span class="number">15</span> <span class="keyword">x</span> <span class="number">1</span> <span class="keyword">x</span> <span class="number">5</span></span><br><span class="line">Result (<span class="number">3</span>d array):  <span class="number">15</span> <span class="keyword">x</span> <span class="number">3</span> <span class="keyword">x</span> <span class="number">5</span></span><br><span class="line"></span><br><span class="line">A      (<span class="number">3</span>d array):  <span class="number">15</span> <span class="keyword">x</span> <span class="number">3</span> <span class="keyword">x</span> <span class="number">5</span></span><br><span class="line">B      (<span class="number">2</span>d array):       <span class="number">3</span> <span class="keyword">x</span> <span class="number">5</span></span><br><span class="line">Result (<span class="number">3</span>d array):  <span class="number">15</span> <span class="keyword">x</span> <span class="number">3</span> <span class="keyword">x</span> <span class="number">5</span></span><br><span class="line"></span><br><span class="line">A      (<span class="number">3</span>d array):  <span class="number">15</span> <span class="keyword">x</span> <span class="number">3</span> <span class="keyword">x</span> <span class="number">5</span></span><br><span class="line">B      (<span class="number">2</span>d array):       <span class="number">3</span> <span class="keyword">x</span> <span class="number">1</span></span><br><span class="line">Result (<span class="number">3</span>d array):  <span class="number">15</span> <span class="keyword">x</span> <span class="number">3</span> <span class="keyword">x</span> <span class="number">5</span></span><br></pre></td></tr></table></figure>
+<p>以下是不能broadcast的形状示例：</p>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">A      (1d <span class="built_in">array</span>):  <span class="number">3</span></span><br><span class="line">B      (1d <span class="built_in">array</span>):  <span class="number">4</span> # trailing <span class="built_in">dimensions</span> <span class="keyword">do</span> <span class="keyword">not</span> match</span><br><span class="line"></span><br><span class="line">A      (2d <span class="built_in">array</span>):      <span class="number">2</span> x <span class="number">1</span></span><br><span class="line">B      (3d <span class="built_in">array</span>):  <span class="number">8</span> x <span class="number">4</span> x <span class="number">3</span> # <span class="built_in">second</span> from <span class="built_in">last</span> <span class="built_in">dimensions</span> mismatched</span><br></pre></td></tr></table></figure>
+<p>所以经常会有这样的需求：在数组的某一维度上增加一个1，例如维度(4,3)转换成(4,1,3), 我们可以使用np.newaxis属性以及全切片来插入新轴：</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">arr = np.zeros((4, 4))</span><br><span class="line">arr_3d = arr[:, np.newaxis, :]</span><br><span class="line">arr_3d.shape <span class="comment"># [4,1,4]</span></span><br></pre></td></tr></table></figure>
 
                 
 
@@ -229,13 +238,9 @@
                 <!-- Pager -->
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/2019/06/14/Leetcode-4-Median-of-Two-Sorted-Arrays/" data-toggle="tooltip" data-placement="top" title="Leetcode 4. Median of Two Sorted Arrays">&larr; Previous Post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/2019/06/12/Leetcode-Shell/" data-toggle="tooltip" data-placement="top" title="Leetcode Shell">Next Post &rarr;</a>
+                            <a href="/2019/07/14/一类特殊的BFS/" data-toggle="tooltip" data-placement="top" title="一类特殊的BFS">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -265,7 +270,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="nav">none</ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text"><span id="&#x5E7F;&#x64AD;broadcasting">&#x5E7F;&#x64AD;&#xFF08;broadcasting&#xFF09;</span></span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text"><span id="&#x5E7F;&#x64AD;&#x7684;&#x539F;&#x5219;">&#x5E7F;&#x64AD;&#x7684;&#x539F;&#x5219;&#xFF1A;</span></span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.</span> <span class="toc-nav-text"><span id="example">Example</span></span></a></li></ol>
         
         </div>
       </aside>
@@ -285,7 +290,7 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#随笔" title="随笔">随笔</a>
+                          <a class="tag" href="/tags/#python" title="python">python</a>
                         
                     </div>
                 </section>
@@ -320,8 +325,8 @@
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = "your-disqus-ID";
-    var disqus_identifier = "http://rookicm.github.io/2019/06/12/keep-calm-and-code-on/";
-    var disqus_url = "http://rookicm.github.io/2019/06/12/keep-calm-and-code-on/";
+    var disqus_identifier = "http://rookicm.github.io/2019/08/07/python-broadcast/";
+    var disqus_url = "http://rookicm.github.io/2019/08/07/python-broadcast/";
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

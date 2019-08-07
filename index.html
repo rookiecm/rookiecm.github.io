@@ -136,13 +136,6 @@
 
                         
                         <li>
-                            <a href="/archive/">Archives</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/about/">About</a>
                         </li>
                         
@@ -151,6 +144,13 @@
                         
                         <li>
                             <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
                         </li>
                         
                     
@@ -210,6 +210,44 @@
             
                 <!-- Main Content -->
 
+
+<div class="post-preview">
+
+    <a href="/2019/08/07/python-broadcast/">
+        <h2 class="post-title">
+            python broadcast
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            广播（broadcasting）
+指的是不同形状的数组之间的算术运算的执行方式。
+广播的原则：
+两个数组从后向前对比，每个维度数组兼容，当：
+
+数值相等
+或其中一个数值为1
+如果较短的数组维度遍历完毕，则可以广播，否则抛出ValueError: frames are not aligned异常
+
+当比较的任何一个维度为1时，则使用另一个。换句话说，大小为1的维被拉伸或“复制”以匹配另一维。
+......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Meng Cao on
+            2019-08-07
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#python" title="python">python</a>
+            
+        </div>
+    
+
+</div>
+<hr>
 
 <div class="post-preview">
 
@@ -509,41 +547,6 @@ O(eval)为对每个元素判断是否符合要求的时间复杂度。
 </div>
 <hr>
 
-<div class="post-preview">
-
-    <a href="/2019/06/01/单调栈总结/">
-        <h2 class="post-title">
-            单调栈总结
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            理论
-单调栈是一个维护性的数据结构，通常用于一下场景：
-给定数组nums, 对于某一位置i :
-
-找到向左数第一个比nums[i]大的位置 —&gt; 从左向右维护一个单调递减栈；
-找到向左数第一个比nums[i]小的位置 —&gt; 从左向右维护一个单调递增栈；
-找到向右数第一个比nums[i]大的位置 —&gt; 从右向左维护一个单调递减栈；
-找到向右数第一个比nums[i]小的位置 —......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Meng Cao on
-            2019-06-01
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#算法" title="算法">算法</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
 
 
 <!-- Pager -->
@@ -584,27 +587,29 @@ O(eval)为对每个元素判断是否符合要求的时间复杂度。
             
         
             
+        
+            
+        
+            
+        
+            
             <a href="/tags/#C++" title="C++" rel="2">C++</a>
             
         
             
         
             
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
             <a href="/tags/#随笔" title="随笔" rel="2">随笔</a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
             
         
             
@@ -663,6 +668,10 @@ O(eval)为对每个元素判断是否符合要求的时间复杂度。
     <ul>
       
         <li>
+          <a href="/2019/08/07/python-broadcast/">python broadcast</a>
+        </li>
+      
+        <li>
           <a href="/2019/07/14/一类特殊的BFS/">一类特殊的BFS</a>
         </li>
       
@@ -676,10 +685,6 @@ O(eval)为对每个元素判断是否符合要求的时间复杂度。
       
         <li>
           <a href="/2019/06/17/最长递增子序列LIS/">最长递增子序列LIS</a>
-        </li>
-      
-        <li>
-          <a href="/2019/06/14/Leetcode-4-Median-of-Two-Sorted-Arrays/">Leetcode 4. Median of Two Sorted Arrays</a>
         </li>
       
     </ul>
